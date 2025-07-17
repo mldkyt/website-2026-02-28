@@ -1,0 +1,47 @@
+---
+import Cursor from "@components/cursor.astro";
+import Footer from "@components/footer.astro";
+import Header from "@components/header.astro";
+import Meta from "@components/meta.astro";
+import Scripts from "@components/scripts.astro";
+import "@styles/global.module.css";
+
+export const name = "New domain";
+export const description = "Akatsuki's new domain";
+export const date = "2024-04-28";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="New domain" description="Lunya's new domain" />
+        <Scripts />
+        <Cursor />
+    </head>
+    <body>
+        <canvas id="background"></canvas>
+
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <div>
+                    <h2>🌟 Exciting News! 🌟</h2>
+                    <p>
+                        Big changes are happening on my website! We've moved to a sleek, new domain: <a href="https://mldkyt.nekoweb.org">mldkyt.nekoweb.org</a>. Say goodbye to the old <a href="https://mldkyt.codeberg.page"
+                            >mldkyt.codeberg.page</a
+                        > and embrace the fresh, dynamic vibe of our new home!
+                    </p>
+                    <p>Why the switch? Simple. The new domain rolls off the tongue effortlessly, making it easier for visitors to remember and share. Plus, it aligns perfectly with our evolving brand identity.</p>
+                    <p>
+                        Join us on this exciting journey as we continue to innovate and provide top-notch content. Update your bookmarks and spread the word about our new domain, because the best is yet to come at <a
+                            href="https://mldkyt.nekoweb.org">mldkyt.nekoweb.org</a
+                        >! 🚀
+                    </p>
+                </div>
+            </main>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
+</html>

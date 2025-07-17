@@ -1,0 +1,55 @@
+.project {
+    margin-bottom: 20px;
+    background-color: #333;
+    color: #fff;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    border: 4px solid gray;
+    border-bottom: 4px solid rgb(61, 61, 61);
+    border-right: 4px solid rgb(61, 61, 61);
+    margin: 4px;
+}
+
+.project h3 {
+    padding: 6px 0;
+    height: 30px;
+    font-size: medium;
+    text-shadow: 2px 2px 2px #000;
+    background-color: #333333aa;
+    padding-left: 10px;
+}
+
+
+.project p {
+    margin: 0;
+    padding-left: 20px;
+    color: #ffffff;
+    text-shadow: 2px 2px 2px #000;
+    background-color: #333333aa;
+    height: 70px;
+}
+
+.error {
+    background-color: rgb(94, 3, 3);
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.project a {
+    color: white;
+    text-decoration: none;
+}
+
+.projectContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 650px) {
+    .projectContainer {
+        grid-template-columns: 1fr;
+    }
+}

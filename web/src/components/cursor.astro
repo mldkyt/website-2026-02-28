@@ -1,0 +1,65 @@
+<script is:inline defer>
+    window.addEventListener("load", (event) => {
+        if (localStorage.getItem("cursorSetting") == "disable") {
+            return;
+        }
+
+    const date = new Date();
+
+        if ((date.getMonth() === 11 || (date.getMonth() === 0 && date.getDay() < 15)) && localStorage.getItem("christmasTheme") !== "disable") {
+            const colors = [
+                "#00f",
+                "#f00",
+                "#0f0",
+                "#ff0",
+                "#f7f",
+                "#0ff"
+            ];
+
+            let fairyDustElements = [];
+            let rainbowElements = [];
+
+            for(let i = 0; i < ~~(Math.random() * 10); i++) {
+                fairyDustElements.push(colors[~~(Math.random() * colors.length)]);
+            }
+
+            for(let i = 0; i < ~~(Math.random() * 10); i++) {
+                rainbowElements.push(colors[~~(Math.random() * colors.length)]);
+            }
+
+        cursoreffects.fairyDustCursor({
+                colors: fairyDustElements
+        });
+        cursoreffects.rainbowCursor({
+                colors: rainbowElements, length: ~~(Math.random() * 100), size: 5
+        });
+        }
+        else {
+            cursoreffects.fairyDustCursor({
+                colors: ["#5BCEFA", "#F5A9B8", "#FFFFFF"]
+            });
+            cursoreffects.rainbowCursor({
+                colors: ["lightblue", "pink", "white", "pink", "lightblue"], length: 50, size: 5
+            });
+        }
+
+    });
+
+    window.onload = function setUpEnableCursor() {
+        // Footer toggle cursor switch
+        /** @type {HTMLInputElement} */
+        let enableCursor = document.getElementById("enablecursor");
+        enableCursor.checked = localStorage.getItem("cursorSetting") != "disable";
+        enableCursor.onchange = function toggleCursor() {
+            if (enableCursor.checked) {
+                if (localStorage.getItem("cursorSetting") != null) {
+                    localStorage.removeItem("cursorSetting");
+                }
+            } else {
+                localStorage.setItem("cursorSetting", "disable");
+            }
+
+            location.reload();
+        };
+    };
+</script>

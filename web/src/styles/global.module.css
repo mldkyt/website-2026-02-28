@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "MS UI Gothic", nec_apc3, Verdana, sans-serif;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+:root {
+    color-scheme: dark;
+}
+
+/* Override ul and li beforehand to get overriden again by header */
+
+ul {
+    margin-bottom: 20px;
+    list-style-type: disc;
+}
+
+li {
+    color: #eee;
+    margin-left: 1.2em;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+/* Header */
+header {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #fff;  
+}
+
+header nav {
+    padding: 5px 15px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 10px;
+    margin-left: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Content */
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h2, h3, h4, h5, h6 {
+    margin: 0 4px;
+}
+
+p {
+    color: #eee;
+    margin: 0 6px;
+    margin-bottom: 20px;
+}
+
+img {
+    max-width: 100%;
+}
+
+details > summary {
+    color: #f991df;
+    cursor: pointer;
+    font-size: larger;
+    font-weight: bold;
+}
+
+/* Links */
+
+a {
+	color: #f991df;
+}
+
+a:hover {
+    color: #8482f7;
+}
+
+a:active {
+    color: #4c4af1;
+}
+
+/* Footer */
+
+footer {
+    max-width: 800px;
+    margin: 0 auto;
+    /* background: linear-gradient(to bottom, #222222 0%, #2c2c2c 30% 70%, #222222 100%); */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Button styles */
+button {
+    background-color: #c0c0c0;
+    color: black;
+    padding: 4px 20px;
+    border: 2px solid gray;
+    border-top: 3px solid lightgray;
+}
+
+button:hover {
+    border: 3px solid rgb(53, 53, 53);
+    border-top: 3px solid rgb(97, 97, 97);
+}
+
+button:active {
+    border-bottom: 3px solid gray;
+    border-right: 3px solid gray;
+    border-left: 4px solid gray;
+    border-top: 4px solid gray;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* code tags */
+code {
+    color: rgb(231, 124, 245);
+    font-family: monospace;
+}
+
+/* background */
+#background {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}

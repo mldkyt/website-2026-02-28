@@ -1,0 +1,75 @@
+---
+import Header from "@components/header.astro";
+import "@styles/global.module.css";
+import Scripts from "@components/scripts.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+import Tab from "@components/Tab.astro";
+import Tabs from "@components/Tabs.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="Akabot Terms of Service" description="The Terms of Service for Akabot Discord bot." />
+        <Scripts />
+        <Cursor />
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Akabot Terms of Service</h1>
+                <Tabs>
+                    <Tab href="/project/akabot">About</Tab>
+                    <Tab href="/project/akabot/privacy">Privacy Policy</Tab>
+                    <Tab href="/project/akabot/tos" selected>Terms of Service</Tab>
+                    <Tab href="/project/akabot/changelog">Changelog</Tab>
+                    <Tab href="https://git.lunya.pet/Lunya/Akabot/wiki">Documentation</Tab>
+                </Tabs>
+                <p>By using the Akabot Discord bot, you agree to the following terms and conditions:</p>
+                <h2>Usage Restrictions</h2>
+                <p>
+            Akabot is intended for use in family-friendly, all-ages Discord servers. You agree not to use Akabot in any
+            NSFW (Not Safe For Work) channels, servers, or areas. Akabot is not designed or permitted for use in
+                    adult-oriented or explicit content environments.
+                </p>
+                <h2>Compliance with Discord Terms</h2>
+                <p>
+            Your use of Akabot must comply with the Discord Terms of Service and Community Guidelines. You are
+            responsible for ensuring that your server and user activities adhere to Discord's policies. Akabot will not
+            be used to
+                    violate Discord's rules or enable others to do so.
+                </p>
+                <h2>No User Data Collection</h2>
+        <p>Akabot does not collect, store, or share any personal user data. Your interactions with the bot are
+            completely private, and we do not have access to any of your Discord information or content.</p>
+                <h2>Modifications to Terms</h2>
+                <p>
+            We may update these Terms of Service from time to time. It is your responsibility to review the current
+            terms each time before using Akabot. Continued use of the bot after any changes indicates your acceptance of
+            the
+                    revised terms.
+                </p>
+                <h2>Termination of Access</h2>
+        <p>We reserve the right to suspend or terminate your access to Akabot at any time for any reason, including if
+            we reasonably believe you have violated these terms or Discord's policies.</p>
+                <h2>Limitation of Liability</h2>
+        <p>Akabot is provided "as is" without warranties. We are not liable for any issues, damages, or disruptions
+            caused by the bot's use or malfunction. Your use of Akabot is at your own risk.</p>
+                <h2>Contact Us</h2>
+        <p>If you have any questions or concerns about these Terms of Service, please contact us at <a
+                href="mailto:mldkyt@proton.me">mldkyt@proton.me</a>.</p>
+        <p>By using Akabot, you agree to these terms and conditions. If you do not agree, please refrain from using the
+            bot.</p>
+            </main>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
+</html>

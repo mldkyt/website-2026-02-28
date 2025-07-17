@@ -1,0 +1,64 @@
+---
+import "@styles/global.module.css";
+export const name = "Enhancing Our Community: Discord Server Rules Update";
+export const description =
+    "Updated Discord Server Rules: Learn about recent changes to our Discord community guidelines, including revised humor guidelines and NSFW/Lewd content policies. Help us maintain a fun, safe, and inclusive environment for all members.";
+export const date = "2024-05-04";
+
+import Header from "@components/header.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+import Scripts from "@components/scripts.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta
+            name="Enhancing Our Community: Discord Server Rules Update"
+            description="Updated Discord Server Rules: Learn about recent changes to our Discord community guidelines, including revised humor guidelines and NSFW/Lewd content policies. Help us maintain a fun, safe, and inclusive environment for all members."
+        />
+        <Scripts />
+        <Cursor />
+    </head>
+    <body>
+        <canvas id="background"></canvas>
+
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+
+                <p><i>this blog post is old, and it's unlikely it reflects the current server anymore.</i></p>
+
+                <p>
+                    Hello everyone! As our Discord community continues to grow, we understand the importance of ensuring that it remains a safe, fun, and inclusive space for all of our members. To achieve this, we have recently updated our
+                    server rules to better reflect our commitment to fostering a respectful and positive environment.
+                </p>
+                <p>In this blog post, we'll provide an overview of the main changes, which include updated guidelines for jokes and humor, as well as revised rules on NSFW/Lewd content.</p>
+                <h2>Setting Boundaries for Humor</h2>
+                <p>
+                    We love a good laugh and appreciate the value that humor can bring to a community. However, we also recognize the importance of being mindful of the fine line between harmless jokes and potentially hurtful remarks. With
+                    this in mind, we have clarified our rules to emphasize the distinction between acceptable jokes and those that may be deemed offensive or inappropriate. Our goal is to promote a lighthearted atmosphere while ensuring
+                    that everyone feels respected and comfortable.
+                </p>
+                <h2>Refining NSFW/Lewd Content Guidelines</h2>
+                <p>
+                    While we understand that many members appreciate mature content, we want to ensure that it is shared responsibly and that all community members feel safe when participating in discussions. To accomplish this, we have
+                    updated our guidelines on NSFW/Lewd content to ensure that such material is shared only in designated channels and with appropriate tags.
+                </p>
+                <p>These updates aim to strike a balance between freedom of expression and the well-being of all our members, creating a comfortable environment for everyone to enjoy.</p>
+                <h2>Reviewing the Updated Rules</h2>
+                <p>
+                    We encourage all our community members to take a moment to review the updated rules and guidelines. Your cooperation and understanding are greatly appreciated, and we thank you for helping us maintain a welcoming,
+                    inclusive, and enjoyable space for everyone to share their passions and connect with like-minded individuals.
+                </p>
+                <p>As always, we welcome your feedback and suggestions on how we can continue to improve our server. Your input is essential in helping us make our community the best it can be.</p>
+                <p>Happy chatting!</p>
+            </main>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
+</html>

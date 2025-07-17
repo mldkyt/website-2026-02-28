@@ -1,0 +1,38 @@
+---
+import "@styles/global.module.css";
+export const name = "Akabot 1.1";
+export const description = "Akabot was updated to 1.1";
+export const date = "2023-12-22";
+
+import Header from "@components/header.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Scripts from "@components/scripts.astro";
+import Cursor from "@components/cursor.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="Akabot 1.1" description="Akabot was updated to 1.1" />
+        <Scripts />
+        <Cursor />
+    </head>
+    <body>
+        <canvas id="background"></canvas>
+
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Akabot 1.1</h1>
+                <p>Version 1.1 of Akabot is out!</p>
+                <p>This release fixes some critical bugs in the code of Akabot and also is the last open source version of Akabot.</p>
+                <p>It also brings a new feature into Akabot - Chat Streaks.</p>
+                <p>Chat Streaks is a feature which brings more life into a Discord server. It encourages members to send at least one message per day in a Discord server, encouraging activity in your Discord server.</p>
+            </main>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
+</html>

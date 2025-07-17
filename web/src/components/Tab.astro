@@ -1,0 +1,14 @@
+---
+import tabStyles from "@styles/tabs.module.css";
+
+interface Props {
+    selected?: boolean;
+    href: string;
+}
+
+const { selected = false, href } = Astro.props;
+---
+
+<a class={`${tabStyles.tab} ${selected ? tabStyles.selectedTab : ""}`} href={href}>
+    <slot/>
+</a>

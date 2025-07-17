@@ -1,0 +1,97 @@
+---
+import "@styles/global.module.css";
+import Header from "@components/header.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+import Scripts from "@components/scripts.astro";
+
+import oneSrc from './1.png';
+import twoSrc from './2.png';
+import thrSrc from './3.png';
+import {getImage} from "astro:assets";
+
+const one = await getImage({src: oneSrc});
+const two = await getImage({src: twoSrc});
+const thr = await getImage({src: thrSrc});
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="Cutie Quiz" description="A cutie quiz to determine how cute you are :3" />
+        <Scripts />
+        <Cursor />
+        <style>
+            .error {
+                border: 1px solid red;
+                background-image: linear-gradient(to bottom, rgb(136, 0, 0) 20%, rgb(78, 0, 0) 50%, rgb(150, 1, 1) 100%);
+                padding: 2px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Cutie Quiz</h1>
+                <div class="error">
+                    <h2>No longer updated</h2>
+                    <p>This project was scheduled for shutdown on Oct 31st. You will always be able to view the source code.</p>
+                </div>
+                <p>
+                    Cutie Quiz is a quiz app whic determines how cute you are. It's a joke, btw.
+                </p>
+                <p>
+            Cutie Quiz is a tiny app which takes a username and then determines how cute you are by analyzing brain
+            waves.
+                </p>
+                <p>
+            It does this using revolutionary next-generation technology, which is newer and better than AI and
+            determines values without errors. It has such good accuracy that you don't need any other source of
+            information to verify your results because our results are always accurate.
+                </p>
+
+                <div id="media_wrapper">
+                    <p>
+                        <button onclick="showMedia()">Show Media</button>
+                    </p>
+                </div>
+
+                <p>
+                    <a href="https://cutie-quiz.vercel.app">
+                        <button>Take it NOW!</button>
+                    </a>
+                    <a href="https://git.lunya.pet/Lunya/CutieQuiz">
+                        <button>Open GitHub page</button>
+                    </a>
+                </p>
+            </main>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js" />
+        <script is:inline type="text/javascript" define:vars={{one: one.src, two: two.src, three: thr.src}}>
+                function showMedia() {
+                    $("#media_wrapper").html(`
+                        <img src={one} alt="Cutie Quiz home page"></img>
+                        <img src={two} alt="Cutie Quiz enter username page"></img>
+                        <img src={three} alt="Cutie Quiz results page for user Lunya"></img>
+                        <p>
+                            <button onclick="hideMedia()">Hide Media</button>
+                        </p>
+                    `);
+                }
+
+                function hideMedia() {
+                    $("#media_wrapper").html(`
+                        <p>
+                            <button onclick="showMedia()">Show Media</button>
+                        </p>
+                    `);
+                }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+---
+import "@styles/global.module.css";
+export const name = "Akabot 1.01";
+export const description = "Akabot was updated to 1.01";
+export const date = "2023-12-21";
+
+import Header from "@components/header.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Scripts from "@components/scripts.astro";
+import Cursor from "@components/cursor.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="Akabot 1.01" description="Akabot was updated to 1.01" />
+        <Scripts />
+        <Cursor />
+    </head>
+    <body>
+        <canvas id="background"></canvas>
+
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Akabot 1.01</h1>
+                <p>Akabot small update version 1.01 is out! This bug fix fixes a few critical things in the code of Akabot.</p>
+                <p>It also brings two new features into Akabot - Chat Revive and Level up rewards.</p>
+                <p>Chat Revive is a feature which pings a channel when it's inactive for a while, reviving the chat. It won't ping twice if there's still no activity.</p>
+                <p>Level-up rewards are simple: If a user has hit a new level and doesn't have a reward role, it will be added to the member.</p>
+            </main>
+            s<Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
+</html>

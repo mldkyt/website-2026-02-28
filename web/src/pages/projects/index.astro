@@ -1,0 +1,168 @@
+---
+import Header from "@components/header.astro";
+import "@styles/global.module.css";
+import projectStyles from "@styles/projectList.module.css";
+import Scripts from "@components/scripts.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+
+import akabotSrc from "../project/akabot/akabot.png";
+import websiteSrc from "../project/website/homepage.png";
+import astolfoIsComingForYouSrc from "../project/astolfoiscomingforyou/safe_1.png";
+import astolfOSSrc from "../project/astolfos/neofetch.png";
+import astolfoModSrc from "../project/astolfomod/biome.png";
+import catgirlNonsenseSrc from "../project/catgirlnonsense/main.png";
+import mcFuckSrc from "../project/mcfuck/main.png";
+import NMFirefoxSrc from "../project/nmfirefox/main.png";
+import uwuRandomSrc from "../project/uwurandom-rs/main.png";
+import birthdaySrc from "../project/birthday/main.png";
+import cutieQuizSrc from "../project/cutiequiz/1.png";
+import fediMeowSrc from "../project/fedi/meow/fedimeow.png";
+import fediSummarizerSrc from "../project/fedi/summarizer/fedisummarizer.png";
+import fediStreaksSrc from "../project/fedi/streaks/fedistreaks.png";
+import nekochatSrc from '../project/neko/chat.png';
+
+import { getImage } from "astro:assets";
+
+const akabot = await getImage({ src: akabotSrc });
+const website = await getImage({ src: websiteSrc });
+const astolfoIsComingForYou = await getImage({ src: astolfoIsComingForYouSrc });
+const astolfOS = await getImage({ src: astolfOSSrc });
+const astolfoMod = await getImage({ src: astolfoModSrc });
+const catgirlNonsense = await getImage({ src: catgirlNonsenseSrc });
+const mcFuck = await getImage({ src: mcFuckSrc });
+const NMFirefox = await getImage({ src: NMFirefoxSrc });
+const uwuRandom = await getImage({ src: uwuRandomSrc });
+const birthday = await getImage({ src: birthdaySrc });
+const cutieQuiz = await getImage({ src: cutieQuizSrc });
+const nekochat = await getImage({ src: nekochatSrc });
+
+const fediMeow = await getImage({ src: fediMeowSrc });
+const fediSummarizer = await getImage({ src: fediSummarizerSrc });
+const fediStreaks = await getImage({ src: fediStreaksSrc });
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <Meta name="Project List" description="List of Lunya's projects" />
+        <Scripts />
+        <Cursor />
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Lunya's projects</h1>
+                <p>This is a list of Lunya's projects.</p>
+                <div class={projectStyles.projectContainer}>
+                    <a href="/project/akabot">
+                        <div class={projectStyles.project} style={`background-image: url(${akabot.src});`}>
+                            <h3>Akabot</h3>
+                            <p>A Discord bot with lots of features.</p>
+                        </div>
+                    </a>
+                    <a href="/project/website">
+                        <div class={projectStyles.project} style={`background-image: url(${website.src});`}>
+                            <h3>Website</h3>
+                            <p>This very website! Add effects used on my site to yours!</p>
+                        </div>
+                    </a>
+                    <a href="/project/astolfoiscomingforyou">
+                        <div class={projectStyles.project} style={`background-image: url(${astolfoIsComingForYou.src});`}>
+                            <h3>Astolfo is coming for you</h3>
+                            <p>Astolfo comes for you, with friendly and unfriendly variants.</p>
+                        </div>
+                    </a>
+                    <a href="/project/astolfos">
+                        <div class={projectStyles.project} style={`background-image: url(${astolfOS.src});`}>
+                            <h3>AstolfOS</h3>
+                            <p>An operating system with Astolfo.</p>
+                        </div>
+                    </a>
+                    <a href="/project/astolfomod">
+                        <div class={projectStyles.project} style={`background-image: url(${astolfoMod.src});`}>
+                            <h3>Astolfo Mod</h3>
+                            <p>A Minecraft mod that adds many non-binary, transgender and femboy characters to the game.</p>
+                        </div>
+                    </a>
+                    <a href="/project/catgirlnonsense">
+                        <div class={projectStyles.project} style={`background-image: url(${catgirlNonsense.src});`}>
+                            <h3>Catgirl Nonsense</h3>
+                            <p>Catgirl nonsense generator.</p>
+                        </div>
+                    </a>
+                    <a href="/project/mcfuck">
+                        <div class={projectStyles.project} style={`background-image: url(${mcFuck.src});`}>
+                            <h3>MCFuck</h3>
+                            <p>An application to mess up your Minecraft settings.</p>
+                        </div>
+                    </a>
+                    <a href="/project/nmfirefox">
+                        <div class={projectStyles.project} style={`background-image: url(${NMFirefox.src});`}>
+                            <h3>Nexus Enhancements for Firefox</h3>
+                            <p>A Firefox extension that allows hiding comments from bad users.</p>
+                        </div>
+                    </a>
+                    <a href="/project/neko/chat" style={`background-image: url(${nekochat.src});`}>
+                        <div class={projectStyles.project}>
+                            <h3>NekoChat</h3>
+                            <p>embeddable chat for any nekoweb website</p>
+                        </div>
+                    </a>
+                    <a href="/project/uwurandom-rs">
+                        <div class={projectStyles.project} style={`background-image: url(${uwuRandom.src});`}>
+                            <h3>uwurandom-rs</h3>
+                            <p>Catgirl nonsense, but in the Rust programming langauge, for maximum femininity.</p>
+                        </div>
+                    </a>
+                    <a href="/project/birthday">
+                        <div class={projectStyles.project} style={`background-image: url(${birthday.src});`}>
+                            <h3>Birthday</h3>
+                            <p>Forces you to wish birthday to anyone in your circle so you never forget.</p>
+                        </div>
+                    </a>
+                    <a href="/project/fedi/meow">
+                        <div class={projectStyles.project} style={`background-image: url(${fediMeow.src});`}>
+                            <h3>Fedi Meow</h3>
+                            <p>This is a bot that meows every hour on fedi.</p>
+                        </div>
+                    </a>
+                    <a href="/project/fedi/summarizer">
+                        <div class={projectStyles.project} style={`background-image: url(${fediSummarizer.src});`}>
+                            <h3>Fedi Summarizer</h3>
+                            <p>This bot summarizes the amount of notes you post every midnight.</p>
+                        </div>
+                    </a>
+                    <a href="/project/fedi/streaks">
+                        <div class={projectStyles.project} style={`background-image: url(${fediStreaks.src});`}>
+                            <h3>Fedi Streaks</h3>
+                            <p>This bot counts consecutive days of you posting on fedi.</p>
+                        </div>
+                    </a>
+                </div>
+                <br />
+
+                <h2>Archived Projects</h2>
+                <p>A list of projects that are deprecated, archived or deleted. Downloads are available for certain projects.</p>
+                <div class={projectStyles.projectContainer}>
+                    <a href="/project/cutiequiz">
+                        <div class={projectStyles.project} style={`background-image: url(${cutieQuiz.src});`}>
+                            <h3>Cutie Quiz</h3>
+                            <p>Cutie Quiz is a quiz app whic determines how cute you are. Archived and shut down on Oct 31st.</p>
+                        </div>
+                    </a>
+                </div>
+            </main>
+
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
+</html>

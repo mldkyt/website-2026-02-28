@@ -1,0 +1,126 @@
+---
+import Header from "@components/header.astro";
+import "@styles/global.module.css";
+import Scripts from "@components/scripts.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+import Tab from "@components/Tab.astro";
+import Tabs from "@components/Tabs.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+    <Meta name="Akabot Changelog"
+          description="The changelog of Akabot, the Discord bot. See what's new and what's changed in the latest version."/>
+        <Scripts />
+        <Cursor />
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Akabot Changelog</h1>
+                <Tabs>
+                    <Tab href="/project/akabot">About</Tab>
+                    <Tab href="/project/akabot/privacy">Privacy Policy</Tab>
+                    <Tab href="/project/akabot/tos">Terms of Service</Tab>
+                    <Tab href="/project/akabot/changelog" selected>Changelog</Tab>
+                    <Tab href="https://git.lunya.pet/Lunya/Akabot/wiki">Documentation</Tab>
+                </Tabs>
+                <h2>Version 4.0</h2>
+                <ul>
+                    <li>New Database</li>
+                    <li>Better Temporary VC's</li>
+                    <li>Donations</li>
+                    <li>Fixes</li>
+                    <li>Network speed improvements</li>
+                </ul>
+                <h2>Version 3.4</h2>
+                <ul>
+                    <li>Added Anti Spam into Anti Raid</li>
+                    <li>Fixed Admin Commands</li>
+                    <li>Fixed Giveaways</li>
+                    <li>Added list command to Giveaways</li>
+                    <li>Added Tips</li>
+                    <li>Added Tickets</li>
+                </ul>
+                <h2>Version 3.3</h2>
+                <ul>
+                    <li>Chat Streaks now reply to the user instead of sending a chat message</li>
+                    <li>Leveling now uses UTC time instead of server clock</li>
+                    <li>Added server based time</li>
+                    <li>Added server settings instead of server language setting</li>
+                    <li>Updated translations</li>
+                    <li>Added 4 languages</li>
+                    <li>Fixed a bug in Chat Streaks that allowed a person to keep their chat streak for 2 days</li>
+                    <li>Added per-user settings</li>
+                    <li>Added ability to disable Chat Streaks messages or reduce their frequency</li>
+                </ul>
+                <h2>Version 3.2</h2>
+                <ul>
+                    <li>Improved Leveling module</li>
+                    <li>Added automod actions</li>
+                    <li>Added /purge command to moderation</li>
+                    <li>Improved bug reporting and feature suggesting</li>
+                    <li>Added warnings to moderation commands</li>
+                    <li>Improved reaction roles creation</li>
+                    <li>Added ability to edit message in reaction roles</li>
+                </ul>
+                <h2>Version 3.13</h2>
+                <ul>
+                    <li>Improved error logging in an attempt to catch more errors and fix more bugs</li>
+                    <li>Fixed 3 bugs related to logging which
+                        <ul>
+                            <li>Would not log when a channel topic was added or removed</li>
+                            <li>Wouldn't log role permission changes</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h2>Version 3.12</h2>
+                <ul>
+                    <li>Improved issue reporting using `/feedback` command</li>
+                    <li>Added `/donate` and `/changelog`</li>
+                    <li>Better Giveaways: Winner count, minutes, close (end early)</li>
+                    <li>Chat Streaks leaderboard</li>
+                    <li>Chat Summary no longer counts bots</li>
+                    <li>Added Sentry logging and heartbeat (Sentry is a self-hosted open-source alternative)</li>
+                </ul>
+                <h2>Version 3</h2>
+                <ul>
+                    <li>Remove polls</li>
+                    <li>Better permission checks</li>
+                    <li>Fixes to chat streaks</li>
+                    <li>Fixes to chat summary</li>
+                    <li>Limitation of intents for verification</li>
+                    <li>Privacy policy added on website</li>
+                    <li>Terms of Service added on website</li>
+                </ul>
+                <h2>Version 2</h2>
+                <ul>
+                    <li>The bot was converted to py-cord, making it more stable and consistent</li>
+                </ul>
+                <h2>Version 1.1</h2>
+                <ul>
+                    <li>Chat Streaks</li>
+                </ul>
+                <h2>Version 1.01</h2>
+                <ul>
+                    <li>Added chat revival</li>
+                    <li>Added level up rewards</li>
+                </ul>
+                <h2>Initial release</h2>
+                <ul>
+                    <li>Initial release</li>
+                </ul>
+            </main>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
+</html>

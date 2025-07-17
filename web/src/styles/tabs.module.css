@@ -1,0 +1,15 @@
+.tabs {
+    display: flex;
+    border: 1px solid gray;
+}
+
+.tab {
+    padding: 2px 8px;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid gray;
+}
+
+.selectedTab {
+    border: 2px solid white;
+}

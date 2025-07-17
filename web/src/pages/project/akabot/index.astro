@@ -1,0 +1,133 @@
+---
+import "@styles/global.module.css";
+import Header from "@components/header.astro";
+import Scripts from "@components/scripts.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+import Tabs from "@components/Tabs.astro";
+import Tab from "@components/Tab.astro";
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <style>
+        .warning {
+            background-color: rgb(75, 75, 0);
+            padding: 0.5em;
+            margin: 0.5em;
+            border: 2px solid gray;
+            border-top: 2px solid lightgray;
+            border-left: 2px solid lightgray;
+        }
+    </style>
+    <Meta name="AkaBot" description="A Discord bot by Lunya"/>
+    <Scripts/>
+    <Cursor/>
+</head>
+
+<body>
+<canvas id="background"></canvas>
+
+<!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    <Header/>
+    <main>
+        <h1>Akabot</h1>
+        <Tabs>
+            <Tab href="/project/akabot" selected>About</Tab>
+            <Tab href="/project/akabot/privacy">Privacy Policy</Tab>
+            <Tab href="/project/akabot/tos">Terms of Service</Tab>
+            <Tab href="/project/akabot/changelog">Changelog</Tab>
+            <Tab href="https://git.lunya.pet/Lunya/Akabot/wiki">Documentation</Tab>
+        </Tabs>
+        <p>A verified Discord bot by Lunya, filled to the brim with cool features, all for free of charge.</p>
+
+        <div>
+            <a href="https://discord.com/api/oauth2/authorize?client_id=1172922944033411243&permissions=2048&scope=bot">
+                <button>Invite</button>
+            </a>
+            <a href="https://discord.gg/YFksXpXnn6">
+                <button>Support Discord</button>
+            </a>
+            <a href="https://git.lunya.pet/Lunya/Akabot">
+                <button>GitLab (mld's instance)</button>
+            </a>
+            <a href="https://git.lunya.pet/Lunya/Akabot">
+                <button>GitHub</button>
+            </a>
+            <a href="https://codeberg.org/LunyaUwU/Akabot">
+                <button>Codeberg</button>
+            </a>
+            <a href="https://git.gay/mld/Akabot">
+                <button>Git.gay</button>
+            </a>
+        </div>
+
+        <div>
+            <a href="https://git.gay/mld/Akabot">
+                <img src="/buttons/gitgay.svg" alt="Git.gay 88x31 button">
+            </a>
+        </div>
+
+        <p>The support Discord has active updates about the development of the bot, a chatting community and even you
+            can be part of the development by suggesting new features!</p>
+        <p>This Discord bot provides numerous features to enrich your server experience. Below is a simple explanation
+            of what this bot offers:</p>
+        <ul>
+            <li>
+                <strong>Anti Raid:</strong> Detects big
+                join waves and kicks members accordingly.
+            </li>
+            <li>
+                <strong>Chat Revive:</strong> Revives
+                chat if it has been dead for a while.
+            </li>
+            <li>
+                <strong>Chat Streaks:</strong>
+                Encourages activity by counting consecutively sent messages.
+            </li>
+            <li>
+                <strong>Chat Summary:</strong> Every
+                UTC midnight it summarizes the amount of messages sent in chats.
+            </li>
+            <li>
+                <strong>Leveling:</strong> Counts XP from
+                messages, calculate levels and give rewards for levels.
+            </li>
+            <li>
+                <strong>Logging:</strong> Logs different
+                events.
+            </li>
+            <li>
+                <strong>Moderation:</strong> Commands
+                for kicking, banning and muting people, with DM’s.
+            </li>
+            <li>
+                <strong>Reaction Roles:</strong>
+                Buttons for creating reaction roles, with different behavior settings.
+            </li>
+            <li>
+                <strong>Welcome and Goodbye:</strong> Say welcome and say goodbye to members who join or leave.
+            </li>
+            <li>
+                <strong>Giveaways:</strong> Host simple
+                giveaways on your Discord server, with any ending date and custom reward.
+            </li>
+            <li>
+                <strong>Automod Actions:</strong>
+                Perform actions when an automod rule is triggered.
+            </li>
+            <li>
+                <strong>Temporary VC's</strong> - Create unlimited voice channels without needing admins to help.
+            </li>
+        </ul>
+        <p>If you think that any features are missing from the bot, you can suggest them straight from the bot using
+            <code>/feedback suggest</code>. They will be added if they're good.</p>
+    </main>
+    <Footer/>
+</div>
+<script is:inline defer src="/scripts/background.js"></script>
+</body>
+</html>

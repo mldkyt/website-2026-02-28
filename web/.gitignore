@@ -1,0 +1,23 @@
+# build output
+dist/
+dist2/
+
+node_modules/
+
+.venv/
+
+# macOS-specific files
+.DS_Store
+
+# dist
+dist.zip
+
+# env files (they get changed during build but don't have anything important)
+.env
+
+# lock files
+package-lock.json
+yarn.lock
+.env.dev
+.env.prod
+

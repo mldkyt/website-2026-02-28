@@ -1,0 +1,47 @@
+---
+import Header from "@components/header.astro";
+import "@styles/global.module.css";
+import Scripts from "@components/scripts.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="PGP Keys for Lunya" description="These are PGP keys used when e-mailing Lunya." />
+        <Scripts />
+        <Cursor />
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>My Public PGP keys</h1>
+                <p>Please use my PGP keys if you can when e-mailing me.</p>
+                <p>
+                    -----BEGIN PGP PUBLIC KEY BLOCK-----<br />
+                    <br />
+                    xjMEZm3h2RYJKwYBBAHaRw8BAQdAcpuhUcY0G8wCxAG/LMLfkfyLYkeUVkGi<br />
+                    lGU95NKC/83NL2FrYXRzdWtpMjU1NUBwcm90b24ubWUgPGFrYXRzdWtpMjU1<br />
+                    NUBwcm90b24ubWU+wowEEBYKAD4FgmZt4dkECwkHCAmQj/wOYwFChTMDFQgK<br />
+                    BBYAAgECGQECmwMCHgEWIQRUj/nvdlqe+8B/2fmP/A5jAUKFMwAArMoBAN30<br />
+                    9DNtaJZ2t8g2UYwiDaD5edGMdbQrndnsH0QNU00kAP9xqUA+KUMUj3Ox302Q<br />
+                    93c1g3mxmPya0P0GB/XvVTjRCM44BGZt4dkSCisGAQQBl1UBBQEBB0A5aUJ8<br />
+                    AhcsWvj79YcOwABwSkKO2rPpaMs7UyzJstDvKAMBCAfCeAQYFgoAKgWCZm3h<br />
+                    2QmQj/wOYwFChTMCmwwWIQRUj/nvdlqe+8B/2fmP/A5jAUKFMwAAL8YA/j/g<br />
+                    26P2RSccw1Ht1WDLICP4QFP+6Bn1nBD7jHK5lq3TAP0Zq+mSIozaN2V945Wl<br />
+                    F8B7awPr11xJFdHt1KZFOgTzCQ==<br />
+                    =bNxF<br />
+                    -----END PGP PUBLIC KEY BLOCK-----
+                </p>
+            </main>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
+</html>

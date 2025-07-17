@@ -1,0 +1,48 @@
+---
+import Header from "@components/header.astro";
+import "@styles/global.module.css";
+import Scripts from "@components/scripts.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="Page Views" description="Total amount of page views." />
+        <Scripts />
+        <Cursor />
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+        <div id="abovebackground" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+            <Header />
+            <main>
+                <h1>Page Views</h1>
+                <h2>Nekoweb version</h2>
+                <p id="nekowebViews">Loading Nekoweb views...</p>
+                <h2>Total</h2>
+                <p id="totalViews">The total page views amount is loading...</p>
+            </main>
+
+            <script type="text/javascript" is:inline>
+                let nekowebViews = 0;
+                let isADevViews = 0;
+
+                function refreshTotalPageViews() {
+                    $("#totalViews").text("The total page views amount is " + (nekowebViews + isADevViews) + " views.");
+                }
+
+                $.get("https://nekoweb.org/api/site/info/mldkyt", function (data) {
+                    $("#nekowebViews").text("The Nekoweb version of the website currently has " + data["views"] + " views.");
+                    nekowebViews = data["views"];
+                    refreshTotalPageViews();
+                });
+            </script>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
+</html>
