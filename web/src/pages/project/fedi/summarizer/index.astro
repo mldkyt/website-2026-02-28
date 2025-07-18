@@ -6,60 +6,57 @@ import Meta from "@components/meta.astro";
 import Cursor from "@components/cursor.astro";
 import Scripts from "@components/scripts.astro";
 
-import messageSrc from './message.png';
+import messageSrc from "./message.png";
 import { getImage } from "astro:assets";
 
-const message = await getImage({src: messageSrc});
-
+const message = await getImage({ src: messageSrc });
 ---
 
 <!doctype html>
 <html lang="en">
-<head>
-    <Meta name="Fedi Summarizer" description="This bot summarizes the amount of notes you post every midnight." />
-    <Scripts />
-    <Cursor />
-</head>
+    <head>
+        <Meta name="Fedi Summarizer" description="This bot summarizes the amount of notes you post every midnight." />
+        <Scripts />
+        <Cursor />
+    </head>
 
-<body>
-<canvas id="background"></canvas>
-<!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
-<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-    <Header />
-    <main>
-        <h1>Fedi Summarizer</h1>
-        <p>
-            This bot summarizes the amount of notes you post every midnight.
-        </p>
-        <p>
-            This bot summarizes the amount of notes you post every midnight. It does so in your private messages.
-        </p>
-        <p>The message sent to you every midnight contains the following information currently:</p>
-        <ul>
-            <li>Notes count</li>
-            <li>Quote notes</li>
-            <li>Reply notes</li>
-            <li>Renotes</li>
-            <li>Total reactions on your posts</li>
-            <li>Most popular used emoji on your posts</li>
-        </ul>
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Fedi Summarizer</h1>
+                <p>This bot summarizes the amount of notes you post every midnight.</p>
+                <p>This bot summarizes the amount of notes you post every midnight. It does so in your private messages.</p>
+                <p>The message sent to you every midnight contains the following information currently:</p>
+                <ul>
+                    <li>Notes count</li>
+                    <li>Quote notes</li>
+                    <li>Reply notes</li>
+                    <li>Renotes</li>
+                    <li>Total reactions on your posts</li>
+                    <li>Most popular used emoji on your posts</li>
+                </ul>
 
-        <img src={message.src} alt="The example message">
+                <img src={message.src} alt="The example message" />
 
-        <br>
-        <br>
+                <br />
+                <br />
 
-        <p>
-            <a href="https://social.mldchan.dev/@FediSummarizer">
-                <button>Official account</button>
-            </a>
-            <a href="https://git.lunya.pet/Lunya/fedi-summarizer">
-                <button>Source code</button>
-            </a>
-        </p>
-    </main>
-    <Footer />
-</div>
-<script is:inline defer src="/scripts/background.js"></script>
-</body>
+                <p>The main instance of fedi summarizer was unused, so it has been shut down. If you want to run this bot for yourself, the source code is available forever.</p>
+
+                <br />
+                <br />
+
+                <p>
+                    <a href="https://git.lunya.pet/Lunya/fedi-summarizer">
+                        <button>Source code</button>
+                    </a>
+                </p>
+            </main>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
 </html>

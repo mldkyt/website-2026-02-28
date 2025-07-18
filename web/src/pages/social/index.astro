@@ -8,10 +8,10 @@ import socialStyles from "@styles/socialList.module.css";
 import Cursor from "@components/cursor.astro";
 import { getImage } from "astro:assets";
 
-import youtubeOrig from './youtube.png';
-import forgejoOrig from './forgejo.png';
-import twitchOrig from './twitch.png';
-import sharkeyOrig from './sharkey.png';
+import youtubeOrig from "./youtube.png";
+import forgejoOrig from "./forgejo.png";
+import twitchOrig from "./twitch.png";
+import sharkeyOrig from "./sharkey.png";
 
 const youtube = await getImage({ src: youtubeOrig });
 const forgejo = await getImage({ src: forgejoOrig });
@@ -22,7 +22,7 @@ const sharkey = await getImage({ src: sharkeyOrig });
 <!doctype html>
 <html lang="en">
     <head>
-        <Meta name="Social Accounts" description="All of mldchan's social accounts, whether they're social or not." />
+        <Meta name="Lunya's Social Accounts" description="All of Lunya's social accounts, whether they're social or not." />
         <Scripts />
         <Cursor />
     </head>
@@ -33,17 +33,17 @@ const sharkey = await getImage({ src: sharkeyOrig });
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
             <Header />
             <main>
-                <h1>mldkyt's socials</h1>
-                <p>This is a list of mldkyt's social accounts.</p>
+                <h1>Lunya's socials</h1>
+                <p>This is a list of Lunya's social accounts.</p>
                 <div class={socialStyles.socialContainer}>
                     <a href="https://www.youtube.com/channel/UC7JMha1kjOS7gsJXwNtosNw">
                         <div class={socialStyles.social} style={`background-image: url(${youtube.src});`}>
-                            <h3>YouTube (@mldchan)</h3>
+                            <h3>YouTube (@LunyaUwU)</h3>
                         </div>
                     </a>
                     <a href="https://git.lunya.pet/Lunya">
                         <div class={socialStyles.social} style={`background-image: url(${forgejo.src});`}>
-                            <h3>Personal Forgejo (Lunya on git.lunya.pet)</h3>
+                            <h3>Forgejo (Lunya on git.lunya.pet)</h3>
                         </div>
                     </a>
                     <a href="https://www.twitch.tv/LunyaUwU">

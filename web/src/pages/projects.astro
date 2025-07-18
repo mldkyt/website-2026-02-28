@@ -7,32 +7,28 @@ import Footer from "@components/footer.astro";
 import Meta from "@components/meta.astro";
 import Cursor from "@components/cursor.astro";
 
-import akabotSrc from "../project/akabot/akabot.png";
-import websiteSrc from "../project/website/homepage.png";
-import astolfoIsComingForYouSrc from "../project/astolfoiscomingforyou/safe_1.png";
-import astolfOSSrc from "../project/astolfos/neofetch.png";
-import astolfoModSrc from "../project/astolfomod/biome.png";
-import catgirlNonsenseSrc from "../project/catgirlnonsense/main.png";
-import mcFuckSrc from "../project/mcfuck/main.png";
-import NMFirefoxSrc from "../project/nmfirefox/main.png";
-import uwuRandomSrc from "../project/uwurandom-rs/main.png";
-import birthdaySrc from "../project/birthday/main.png";
-import cutieQuizSrc from "../project/cutiequiz/1.png";
-import fediMeowSrc from "../project/fedi/meow/fedimeow.png";
-import fediSummarizerSrc from "../project/fedi/summarizer/fedisummarizer.png";
-import fediStreaksSrc from "../project/fedi/streaks/fedistreaks.png";
-import nekochatSrc from '../project/neko/chat.png';
+import akabotSrc from "./project/akabot/akabot.png";
+import websiteSrc from "./project/website/homepage.png";
+import astolfoIsComingForYouSrc from "./project/astolfoiscomingforyou/safe_1.png";
+import astolfoModSrc from "./project/astolfomod/biome.png";
+import catgirlNonsenseSrc from "./project/catgirlnonsense/main.png";
+import mcFuckSrc from "./project/mcfuck/main.png";
+import uwuRandomSrc from "./project/uwurandom-rs/main.png";
+import birthdaySrc from "./project/birthday/main.png";
+import cutieQuizSrc from "./project/cutiequiz/1.png";
+import fediMeowSrc from "./project/fedi/meow/fedimeow.png";
+import fediSummarizerSrc from "./project/fedi/summarizer/fedisummarizer.png";
+import fediStreaksSrc from "./project/fedi/streaks/fedistreaks.png";
+import nekochatSrc from "./project/neko/chat.png";
 
 import { getImage } from "astro:assets";
 
 const akabot = await getImage({ src: akabotSrc });
 const website = await getImage({ src: websiteSrc });
 const astolfoIsComingForYou = await getImage({ src: astolfoIsComingForYouSrc });
-const astolfOS = await getImage({ src: astolfOSSrc });
 const astolfoMod = await getImage({ src: astolfoModSrc });
 const catgirlNonsense = await getImage({ src: catgirlNonsenseSrc });
 const mcFuck = await getImage({ src: mcFuckSrc });
-const NMFirefox = await getImage({ src: NMFirefoxSrc });
 const uwuRandom = await getImage({ src: uwuRandomSrc });
 const birthday = await getImage({ src: birthdaySrc });
 const cutieQuiz = await getImage({ src: cutieQuizSrc });
@@ -80,12 +76,6 @@ const fediStreaks = await getImage({ src: fediStreaksSrc });
                             <p>Astolfo comes for you, with friendly and unfriendly variants.</p>
                         </div>
                     </a>
-                    <a href="/project/astolfos">
-                        <div class={projectStyles.project} style={`background-image: url(${astolfOS.src});`}>
-                            <h3>AstolfOS</h3>
-                            <p>An operating system with Astolfo.</p>
-                        </div>
-                    </a>
                     <a href="/project/astolfomod">
                         <div class={projectStyles.project} style={`background-image: url(${astolfoMod.src});`}>
                             <h3>Astolfo Mod</h3>
@@ -102,12 +92,6 @@ const fediStreaks = await getImage({ src: fediStreaksSrc });
                         <div class={projectStyles.project} style={`background-image: url(${mcFuck.src});`}>
                             <h3>MCFuck</h3>
                             <p>An application to mess up your Minecraft settings.</p>
-                        </div>
-                    </a>
-                    <a href="/project/nmfirefox">
-                        <div class={projectStyles.project} style={`background-image: url(${NMFirefox.src});`}>
-                            <h3>Nexus Enhancements for Firefox</h3>
-                            <p>A Firefox extension that allows hiding comments from bad users.</p>
                         </div>
                     </a>
                     <a href="/project/neko/chat" style={`background-image: url(${nekochat.src});`}>

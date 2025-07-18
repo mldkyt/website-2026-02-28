@@ -7,130 +7,80 @@ import Scripts from "@components/scripts.astro";
 ---
 
 <html>
-<head>
-    <Meta name="Services"
-          description="Check out my list of self-hosted services, including GitLab, Sharkey and Uptime-Kuma! :3" />
-    <Scripts />
-    <Cursor />
-    <style>
-        .error {
-            background-image: linear-gradient(to bottom, rgb(136, 0, 0) 20%, rgb(78, 0, 0) 50%, rgb(150, 1, 1) 100%);
-            color: white;
-            border: 2px solid red;
-            padding: 10px;
-        }
-    </style>
-</head>
+    <head>
+        <Meta name="Services" description="Check out my list of self-hosted services, including Forgejo and Sharkey! :3" />
+        <Scripts />
+        <Cursor />
+        <style>
+            .error {
+                background-image: linear-gradient(to bottom, rgb(136, 0, 0) 20%, rgb(78, 0, 0) 50%, rgb(150, 1, 1) 100%);
+                color: white;
+                border: 2px solid red;
+                padding: 10px;
+            }
+        </style>
+    </head>
 
-<body>
-<canvas id="background"></canvas>
-<!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
-<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-    <Header />
-    <main>
-        <br>
-        <div class="error">
-            <span>
-                <strong>Note:</strong>
-                <span>Running these services isn't free. If you have spare money, please <a href="/donate">donate</a>. Thank you!</span>
-            </span>
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <br />
+                <div class="error">
+                    <span>
+                        <strong>Note:</strong>
+                        <span>Running these services isn't free. If you have spare money, please <a href="/donate">donate</a>. Thank you!</span>
+                    </span>
+                </div>
+                <h1>Self-hosted services</h1>
+                <p>
+                    I recently (2024/10/28) started self hosting a few pieces of software for my own use. Most of these services have registrations enabled, although registrations require approval. Here are some of my picks for what I host:
+                </p>
+
+                <h2>Akabot: Discord Bot</h2>
+                <p>I maintain and run my own Discord bot. More on that is available <a href="/project/akabot">in its project page</a>.</p>
+                <p>There are 2 versions of Akabot that are run on my server. One is the public version and the other is a more private version.</p>
+
+                <h2>Forgejo: Git server</h2>
+                <p>I self-host an instance of Forgejo for my personal use. I host all of my code on it, mirroring it to other services and I also host mirrors of some of my favorite services.</p>
+                <ul>
+                    <li>
+                        <a href="https://git.lunya.pet/Lunya">https://git.lunya.pet/Lunya</a> - This is my profile.
+                    </li>
+                    <li>
+                        <a href="https://git.lunya.pet/explore">https://git.lunya.pet/explore</a> - Here you can explore all of the public projects on this server.
+                    </li>
+                </ul>
+
+                <h2>Sharkey: The Fediverse</h2>
+                <p>I picked Sharkey for my Fedi software. It is amazing to use and the FE has a lot of cool features :3</p>
+                <ul>
+                    <li>
+                        <a href="https://fedi.lunya.pet/@Lunya">https://fedi.lunya.pet/@Lunya</a> - This is my profile.
+                    </li>
+                    <li>
+                        <a href="https://fedi.lunya.pet/">https://fedi.lunya.pet/</a> - This is the main page of the software. It looks kinda cool with all the moving stuff, doesn't it? :3
+                    </li>
+                </ul>
+                <p>Registrations are <strong>NOT</strong> open on my instance. Please go find a different instance to register at.</p>
+
+                <h1>Fedi Services</h1>
+
+                <p>Fedi services in this section refers to features like bots. This does not include Sharkey, which is listed above.</p>
+
+                <h2>Collab Markov</h2>
+
+                <p>Collab Markov is a silly bot that combines posts from many accounts and generates markovified posts based on them, on an hourly basis.</p>
+                <p>More information about how this service works is on <a href="/project/collabmarkov">its page.</a></p>
+
+                <ul>
+                    <li><a href="https://fedi.lunya.pet/@collabmarkov">Collab Markov fedi account</a></li>
+                </ul>
+            </main>
+            <Footer />
         </div>
-        <h1>Self-hosted services</h1>
-        <p>
-            I recently (2024/10/28) started self hosting a few pieces of software for my own use. Most of these services
-            have registrations enabled, although registrations require approval. Here are some of my picks for what I
-            host:
-        </p>
-
-        <h2>Akabot: My Own Discord Bot</h2>
-        <p>I maintain and run my own Discord bot. More on that is available <a href="/project/akabot">in its project
-            page</a>.</p>
-        <p>There are 2 versions of Akabot that are run on my server. One is the public version and the other is the beta
-            version.</p>
-
-        <h2>Forgejo: Git server</h2>
-        <p>
-            I self-host an instance of Forgejo for my personal use. I host all of my code on it, mirroring it to other services and I also host mirrors of some of my favorite services.
-        </p>
-        <ul>
-            <li>
-                <a href="https://git.lunya.pet/Lunya">https://git.lunya.pet/Lunya</a> - This is my profile.
-            </li>
-            <li>
-                <a href="https://git.lunya.pet/explore">https://git.mldchan.dev/explore</a> - Here you can explore all
-                of the public projects on this server.
-            </li>
-        </ul>
-
-        <h2>Sharkey: The Fediverse</h2>
-        <p>I picked Sharkey for my Fedi software. It is amazing to use and the FE has a lot of cool features :3</p>
-        <ul>
-            <li>
-                <a href="https://social.mldchan.dev/mld">https://social.mldchan.dev/mld</a> - This is my profile.
-            </li>
-            <li>
-                <a href="https://social.mldchan.dev/">https://social.mldchan.dev/</a> - This is the main page of the
-                software. It looks kinda cool with all the moving stuff, doesn't it? :3
-            </li>
-        </ul>
-
-        <h2>GlitchTip: A Sentry Alternative</h2>
-        <p>I have GlitchTip running, albeit only for personal use -- I use this to monitor my own software and send
-            reports to my own server, where no data is sold and is at my home in a safe place.</p>
-        <p>It for example monitors Sharkey, Akabot and GitLab from this list.</p>
-
-        <h1>Fedi Services</h1>
-
-        <p>Fedi services in this section refers to features like bots. This does not include Sharkey, which is listed above.</p>
-
-        <h2>FediMeow: The meowing bot</h2>
-
-        <p>This bot is really simple, it sends a meow every hour.</p>
-
-        <a href="/project/fedi/meow/">
-            <button>View project page</button>
-        </a>
-
-        <h2>Fedi Streaks: Akabot Chat Streaks, for fedi</h2>
-
-        <p>This bot counts consecutive days of you posting on fedi.</p>
-
-        <a href="/project/fedi/streaks/">
-            <button>View project page</button>
-        </a>
-
-        <h2>Fedi Summarizer: Akabot Chat Summary, for fedi</h2>
-
-        <p>This bot summarizes the amount of notes you post every midnight.</p>
-
-        <a href="/project/fedi/summarizer/">
-            <button>View project page</button>
-        </a>
-
-        <h1>Services for friends</h1>
-
-        <h2>Cutie Hangout Bot: A friends only bot for funsies :3</h2>
-        <p>This is a Discord bot that connects 2 Minecraft servers, a website and a Discord server together. It shows
-            the status of the MC servers in both the Discord and on the website. Users can customize settings on the
-            website as well.</p>
-        <p>This bot was named after the Discord server in which it is used: Cutie Hangout.</p>
-        <ul>
-            <li><a href="https://chb.mldchan.dev">https://chb.mldchan.dev</a> - This shows the status of the 2 Minecraft
-                servers.
-            </li>
-        </ul>
-
-        <h2>Crafty: Minecraft dashboard</h2>
-        <p>This is a dashboard for managing Minecraft servers. It allows creating, managing, deleting servers, adding
-            plugins, deleting plugins, running commands all from one site. This service is only accessible internally
-            from the network and not available to the public. I run a MC server for some of my friends.</p>
-
-        <h2>QueerBot: Yet another silly bot</h2>
-        <p>This one is less complicated than Cutie Hangout Bot, but it is very silly in it's own way. This bot is very
-            obsessed with meowing, and :3.</p>
-    </main>
-    <Footer />
-</div>
-<script is:inline defer src="/scripts/background.js"></script>
-</body>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
 </html>
