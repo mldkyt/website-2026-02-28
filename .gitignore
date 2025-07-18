@@ -33,3 +33,4 @@ go.work.sum
 
 # Build files from the website
 dist/
+data/

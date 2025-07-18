@@ -29,10 +29,9 @@ import Cursor from "@components/cursor.astro";
 
             <script type="text/javascript" is:inline>
                 let nekowebViews = 0;
-                let isADevViews = 0;
 
                 function refreshTotalPageViews() {
-                    $("#totalViews").text("The total page views amount is " + (nekowebViews + isADevViews) + " views.");
+                    $("#totalViews").text("The total page views amount is " + (nekowebViews) + " views.");
                 }
 
                 $.get("https://nekoweb.org/api/site/info/mldkyt", function (data) {
