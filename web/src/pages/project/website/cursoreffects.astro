@@ -7,9 +7,9 @@ import Cursor from "@components/cursor.astro";
 import Scripts from "@components/scripts.astro";
 
 import buttonSrc from "@components/btn/button.gif";
-import {getImage} from "astro:assets";
+import { getImage } from "astro:assets";
 
-const button = await getImage({ src: buttonSrc});
+const button = await getImage({ src: buttonSrc });
 ---
 
 <html>
@@ -38,8 +38,7 @@ const button = await getImage({ src: buttonSrc});
                 <h2>How do I add cursor effects to my website?</h2>
                 <ol start="1">
                     <li>
-                To add cursor effects to your website, <a
-                    href="https://github.com/tholman/cursor-effects?tab=readme-ov-file#how-to-use">follow this link</a>
+                        To add cursor effects to your website, <a href="https://github.com/tholman/cursor-effects?tab=readme-ov-file#how-to-use">follow this link</a>
                     </li>
                     <li>
                         Append the script tag that's visible as the first thing in the head tag of your website. <br />
@@ -49,15 +48,13 @@ const button = await getImage({ src: buttonSrc});
                     <li>
                         Here's my configuration, which you can copy and paste and it will give you a non-binary cursor: <br />
                         <code>
-                    cursoreffects.fairyDustCursor(&lbrace; <br/> colors: ["#f3d100", "#ffffff", "#9656cd", "#000000"],
-                    <br/> &rbrace;); <br/> cursoreffects.rainbowCursor(&lbrace; <br/> colors: ["yellow", "white",
-                    "purple", "black"],
+                            cursoreffects.fairyDustCursor(&lbrace; <br /> colors: ["#f3d100", "#ffffff", "#9656cd", "#000000"],
+                            <br /> &rbrace;); <br /> cursoreffects.rainbowCursor(&lbrace; <br /> colors: ["yellow", "white", "purple", "black"],
                             <br /> length: 50, <br /> size: 5, <br /> &rbrace;);
                         </code>
                     </li>
                     <li>
-                Here's my older configuration, which you can copy and paste and it will give you a transgender themed
-                cursor: <br/>
+                        Here's my older configuration, which you can copy and paste and it will give you a transgender themed cursor: <br />
 
                         <code>
                             cursoreffects.fairyDustCursor(&lbrace; <br />
@@ -79,8 +76,10 @@ const button = await getImage({ src: buttonSrc});
                 <h2>Please credit me!</h2>
                 <p>You can add the button from right below here:</p>
                 <img src={button.src} alt="Button" />
-        <p>Make sure to wrap it with an <code>&lt;a&gt;</code> tag to make it a link and set the <code>href</code> to
-            <code>mldkyt.nekoweb.org</code></p>
+                <p>
+                    Make sure to wrap it with an <code>&lt;a&gt;</code> tag to make it a link and set the <code>href</code> to
+                    <code>lunya.pet</code>
+                </p>
             </main>
             <Footer />
 

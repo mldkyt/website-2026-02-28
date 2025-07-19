@@ -31,10 +31,10 @@ import Cursor from "@components/cursor.astro";
                 let nekowebViews = 0;
 
                 function refreshTotalPageViews() {
-                    $("#totalViews").text("The total page views amount is " + (nekowebViews) + " views.");
+                    $("#totalViews").text("The total page views amount is " + nekowebViews + " views.");
                 }
 
-                $.get("https://nekoweb.org/api/site/info/mldkyt", function (data) {
+                $.get("https://nekoweb.org/api/site/info/lunya", function (data) {
                     $("#nekowebViews").text("The Nekoweb version of the website currently has " + data["views"] + " views.");
                     nekowebViews = data["views"];
                     refreshTotalPageViews();

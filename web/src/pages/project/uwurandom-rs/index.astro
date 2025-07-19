@@ -9,40 +9,35 @@ import Scripts from "../../../components/scripts.astro";
 
 <!doctype html>
 <html lang="en">
-<head>
-    <Meta name="uwurandom-rs"
-          description="Catgirl nonsense, but in the Rust programming langauge, for maximum femininity." />
-    <Scripts />
-    <Cursor />
-</head>
+    <head>
+        <Meta name="uwurandom-rs" description="Catgirl nonsense, but in the Rust programming langauge, for maximum femininity." />
+        <Scripts />
+        <Cursor />
+    </head>
 
-<body>
-<canvas id="background"></canvas>
-<!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
-<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-    <Header />
-    <main>
-        <h1>uwurandom-rs</h1>
-        <p>Catgirl nonsense, but in the Rust programming langauge, for maximum femininity.</p>
-        <p>
-            This project, or library to say it right, does the same thing as <a href="/project/catgirlnonsense">Catgirl
-            nonsense</a> does, but it does it as a library in the Rust programming language. Written by a transgirl btw.
-        </p>
-        <p>The library is very easy to use, for the maximum femefficiency :3</p>
-        <p>
-            <a href="https://crates.io/crates/mldkyt-uwurandom-rs">
-                <button>Download from crates.io</button>
-            </a>
-            <a href="https://git.lunya.pet/Lunya/uwurandom-rs">
-                <button>Download from github.com</button>
-            </a>
-            <a href="https://matrix.to/#/@mld:mldchan.dev">
-                <button>Message me on Matrix about this project</button>
-            </a>
-        </p>
-    </main>
-    <Footer />
-</div>
-<script is:inline defer src="/scripts/background.js"></script>
-</body>
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>uwurandom-rs</h1>
+                <p>Catgirl nonsense, but in the Rust programming langauge, for maximum femininity.</p>
+                <p>
+                    This project, or library to say it right, does the same thing as <a href="/project/catgirlnonsense">Catgirl nonsense</a> does, but it does it as a library in the Rust programming language. Written by a transgirl btw.
+                </p>
+                <p>The library is very easy to use, for the maximum femefficiency :3</p>
+                <p>
+                    <a href="https://crates.io/crates/mldkyt-uwurandom-rs">
+                        <button>Download from crates.io</button>
+                    </a>
+                    <a href="https://git.lunya.pet/Lunya/uwurandom-rs">
+                        <button>Download from git.lunya.pet</button>
+                    </a>
+                </p>
+            </main>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
 </html>

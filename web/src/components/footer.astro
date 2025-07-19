@@ -6,15 +6,9 @@ const currentYear = new Date().getFullYear();
 const allPages = await import.meta.glob("../pages/**/*.astro");
 
 const builtDate = new Date();
-const month =
-    (builtDate.getUTCMonth() + 1).toString().length == 1
-        ? "0" + (builtDate.getUTCMonth() + 1)
-        : builtDate.getUTCMonth() + 1;
-const day =
-    builtDate.getUTCDate().toString().length == 1
-        ? "0" + builtDate.getUTCDate()
-        : builtDate.getUTCDate();
-        
+const month = (builtDate.getUTCMonth() + 1).toString().length == 1 ? "0" + (builtDate.getUTCMonth() + 1) : builtDate.getUTCMonth() + 1;
+const day = builtDate.getUTCDate().toString().length == 1 ? "0" + builtDate.getUTCDate() : builtDate.getUTCDate();
+
 const builtString = `v${builtDate.getUTCFullYear()}/${month}/${day} ${builtDate.getUTCHours()}:${builtDate.getUTCMinutes()}`;
 ---
 
@@ -31,7 +25,7 @@ const builtString = `v${builtDate.getUTCFullYear()}/${month}/${day} ${builtDate.
     </style>
     <p>Copyright (C) {currentYear} Lunya</p>
     <div id="footerLinks">
-        <p><a href="mailto:mldkyt@proton.me">E-mail me</a> <a href="/pgp">(GPG Key)</a></p>
+        <p><a href="mailto:lunya.pet@proton.me">E-mail me</a> <a href="/pgp">(GPG Key)</a></p>
         <p><a href="/suggestion">Suggestions</a></p>
         <p><a href="/discord">Discord</a></p>
         <p><a href="/sitemap">{allPages.length} pages here</a></p>
@@ -40,9 +34,10 @@ const builtString = `v${builtDate.getUTCFullYear()}/${month}/${day} ${builtDate.
     <CursorSetting />
     <div>
         <input type="checkbox" name="enablebackground" id="enablebackground" />
-        <label for="enablebackground">Enable Background Effect</label></div>
+        <label for="enablebackground">Enable Background Effect</label>
+    </div>
     <div id="christmas">
-        <input type="checkbox" name="enablechristmas" id="enableChristmas"/>
+        <input type="checkbox" name="enablechristmas" id="enableChristmas" />
         <label for="enableChristmas">Enable Christmas Effects (Available during Christmas)</label>
     </div>
     <script is:inline type="text/javascript">
@@ -56,8 +51,7 @@ const builtString = `v${builtDate.getUTCFullYear()}/${month}/${day} ${builtDate.
             $("#enablebackground").prop("checked", false);
         }
 
-        if (!localStorage.getItem("christmasTheme"))
-            localStorage.setItem("christmasTheme", "enable");
+        if (!localStorage.getItem("christmasTheme")) localStorage.setItem("christmasTheme", "enable");
         if (localStorage.getItem("christmasTheme") === "enable") {
             $("#enableChristmas").prop("checked", true);
         }
@@ -73,12 +67,11 @@ const builtString = `v${builtDate.getUTCFullYear()}/${month}/${day} ${builtDate.
 
             document.location.reload();
         });
-        
-        $("#enableChristmas").change(function() {
+
+        $("#enableChristmas").change(function () {
             if (this.checked) {
                 localStorage.setItem("christmasTheme", "enable");
-            }
-            else {
+            } else {
                 localStorage.setItem("christmasTheme", "disable");
             }
 
