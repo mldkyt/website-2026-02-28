@@ -19,7 +19,6 @@ FROM golang:1.24-alpine3.21 AS build-server
 
 WORKDIR /build
 
-COPY --from=build-web /build/dist/ dist/
 COPY go.mod .
 COPY go.sum .
 COPY main.go .
