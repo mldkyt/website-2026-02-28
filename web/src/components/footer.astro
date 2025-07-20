@@ -3,8 +3,6 @@ import CursorSetting from "./cursorSetting.astro";
 
 const currentYear = new Date().getFullYear();
 
-const allPages = await import.meta.glob("../pages/**/*.astro");
-
 const builtDate = new Date();
 const month = (builtDate.getUTCMonth() + 1).toString().length == 1 ? "0" + (builtDate.getUTCMonth() + 1) : builtDate.getUTCMonth() + 1;
 const day = builtDate.getUTCDate().toString().length == 1 ? "0" + builtDate.getUTCDate() : builtDate.getUTCDate();
@@ -28,7 +26,7 @@ const builtString = `v${builtDate.getUTCFullYear()}/${month}/${day} ${builtDate.
         <p><a href="mailto:lunya.pet@proton.me">E-mail me</a> <a href="/pgp">(GPG Key)</a></p>
         <p><a href="/suggestion">Suggestions</a></p>
         <p><a href="/discord">Discord</a></p>
-        <p><a href="/sitemap">{allPages.length} pages here</a></p>
+        <p><a href="/sitemap">Sitemap</a></p>
         <p>{builtString}</p>
     </div>
     <CursorSetting />
