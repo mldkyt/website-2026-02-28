@@ -1,0 +1,175 @@
+---
+import "../../../styles/global.module.css";
+import Header from "../../../components/header.astro";
+import Scripts from "../../../components/scripts.astro";
+import Footer from "../../../components/footer.astro";
+import Meta from "../../../components/meta.astro";
+import Cursor from "../../../components/cursor.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="Lunya's Mini Mods" description="A bunch of mini mods for My Summer Car, by Lunya :3" />
+        <Scripts />
+        <Cursor />
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Lunya's Mini Mods</h1>
+                <p>This mod adds a bunch of mini mods into My Summer Car.</p>
+                <p><strong>All of the mini mods can be turned off/on in the settings menu</strong></p>
+
+                <ul>
+                    <li>
+                        <p><strong>Better FPS meter</strong></p>
+
+                        <p>This improves the vanilla FPS meter with a few tweaks:</p>
+                        <ol>
+                            <li>You can change the update frequency of the FPS meter</li>
+                            <li>The difference between the last value and current value can be displayed</li>
+                            <li>Enable colors so you can see if your FPS is good or not</li>
+                        </ol>
+                    </li>
+                    <li>
+                        <p><strong>Better Window Handles</strong></p>
+                        <p>Improves the speed at which windows of the Satsuma roll up and down.</p>
+                    </li>
+                    <li>
+                        <p><strong>Disable Amis2 </strong></p>
+                        <p>Disables Petteri.</p>
+                    </li>
+                    <li>
+                        <p><strong>Disable Kylajani</strong></p>
+                        <p>Disable Kylajani.</p>
+                    </li>
+                    <li>
+                        <p><strong>Disable Rally</strong></p>
+                        <p>Disables rally on Saturday and Sunday.</p>
+                    </li>
+                    <li>
+                        <p><strong>Enable Console</strong></p>
+                        <p>By default the console seen when opening the pause menu only works if your name is "Rauhijoketti". Enabling this mini mod will make it work at any time.</p>
+                    </li>
+                    <li>
+                        <p><strong>Disable Green Car </strong></p>
+                        <p>Disables Fittan so you no longer crash into him when driving on the dirt roads.</p>
+                    </li>
+                    <li>
+                        <p><strong>Save Car Temperature </strong></p>
+                        <p>
+                            When the game is saved, the temperature of the car is saved with it. When it is reloaded, the temperature of the car is reloaded too. This allows you to start the Satsuma faster if you have only saved the game.
+                        </p>
+                    </li>
+                    <li>
+                        <p><strong>Player can't die from Urine </strong></p>
+                        <p>Makes the game more realistic. Prevents the player from dying from urine by making them automatically piss when needed. In real life, a human cannot die from bladder bursting.</p>
+                    </li>
+                    <li>
+                        <p><strong>Move Jokke in Menu </strong></p>
+                        <p>Adds an option to move Jokke a bit to the right in the menu so you can see him on a non-wide monitor. It also adds a button that moves it right away.</p>
+                    </li>
+                    <li>
+                        <p><strong>Change Loading Screen </strong></p>
+                        <p>Changes the loading screen. You can customize the game year, the color of the text on the loading screen or you can turn on rainbow mode.</p>
+                    </li>
+                    <li>
+                        <p><strong> Garage Customizer </strong></p>
+                        <p>Customize your garage in a few ways:</p>
+                        <ol>
+                            <li>You can move the table into 4 locations, so you can put it on the other side of the garage, or towards the door. You can also disable it altogether.</li>
+                            <li>You can move the flag on the other side of the garage, or disable it altogether.</li>
+                        </ol>
+                    </li>
+                    <li>
+                        <p><strong>Money Changes </strong></p>
+                        <p>When your money changes, e.g. you buy something or earn money, the corresponding amount is displayed next to the money stat.</p>
+                    </li>
+                    <li>
+                        <p><strong>Gifu Gauge Fix </strong></p>
+                        <p>Fixes the battery and oil gauge on the Gifu.</p>
+                    </li>
+                    <li>
+                        <p><strong>Infinite Nitrous </strong></p>
+                        <p>When enabled, constantly refills the currently attached N2O bottle in the car.</p>
+                    </li>
+                    <li>
+                        <p><strong>Water Bills </strong></p>
+                        <p>Adds water bills.</p>
+                        <ol>
+                            <li>Water in the player home is no longer connected to the electricity, but it is connected to the water bills mod.</li>
+                            <li>Eventually, you will receive a new letter in your mailbox that contains your water bills.</li>
+                            <li>Failure to pay the water bills will result in the water being cut off.</li>
+                        </ol>
+                    </li>
+                    <li>
+                        <p><strong>Disable Boat </strong></p>
+                        <p>Disables the AI boat driving around on the lake.</p>
+                    </li>
+                    <li>
+                        <p><strong>Highway Car breakdowns </strong></p>
+                        <p>When driving on the highway, you can now spot highway cars sitting on the side of the road with the guy waiting for someone to stop.</p>
+                        <ol>
+                            <li>There are 5 spots where the car can stop. All are chosen to be a bit remote from the store.</li>
+                            <li>There are 6 methods a car can break down, ranging from coolant to battery.</li>
+                            <li>Delivering the person the supplies needed for repair will result in a payment of the items + delivery.</li>
+                        </ol>
+                    </li>
+                    <li>
+                        <p><strong>Disable Flies</strong></p>
+                        <p>Disable annoying mosquitoes around the player</p>
+                    </li>
+                    <li>
+                        <p><strong>Disable Bumblebee </strong></p>
+                        <p>Disables bumblebee when driving without windshield</p>
+                    </li>
+                    <li>
+                        <p><strong>Adjustable Grip</strong></p>
+                        <p>Adjust the Hayosiko and Ferndale tire grip</p>
+                    </li>
+                    <li>
+                        <p><strong>Disable Jail</strong></p>
+                        <p>Disable spawning police around the player house when wanted</p>
+                    </li>
+                    <li>
+                        <p><strong>Reorder Game UI</strong></p>
+                        <p>Allows reordering the in-game UI.</p>
+                        <ol>
+                            <li>There are presets, currently the default UI (reset settings) and the old UI</li>
+                            <li>A player can also make a custom arrangement for the UI</li>
+                        </ol>
+                    </li>
+                    <li>
+                        <p><strong>Clean up Furiture</strong></p>
+                        <p>Disables the books inside the bookshelves in the player's home</p>
+                    </li>
+                    <li>
+                        <p><strong>Kitchen Door</strong></p>
+                        <p>This mod adds a kitchen door which was missing in the game</p>
+                    </li>
+                    <li>
+                        <p><strong>Asphalt Roads</strong></p>
+                        <p>Superseeds the Asphalt Roads standalone mod. Replaces the dirt roads with Asphalt Roads</p>
+                    </li>
+                    <li>
+                        <p><strong>Mirror Size</strong></p>
+                        <p>Change the middle mirror size in the Satsuma</p>
+                    </li>
+                </ul>
+
+                <p>
+                    <a href="https://www.nexusmods.com/mysummercar/mods/8944">
+                        <button>Download this mod on NexusMods</button>
+                    </a>
+                </p>
+            </main>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
+</html>

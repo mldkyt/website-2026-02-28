@@ -20,6 +20,9 @@ import fediMeowSrc from "./project/fedi/meow/fedimeow.png";
 import fediSummarizerSrc from "./project/fedi/summarizer/fedisummarizer.png";
 import fediStreaksSrc from "./project/fedi/streaks/fedistreaks.png";
 import nekochatSrc from "./project/neko/chat.png";
+import legacyMscSrc from "./project/legacymsc/legacymsc.webp";
+import prideModSrc from "./project/pridemod/pridemod.webp";
+import lunyasMiniModsSrc from "./project/lunyas-mini-mods/lunyas-mini-mods.webp";
 
 import { getImage } from "astro:assets";
 
@@ -33,6 +36,10 @@ const uwuRandom = await getImage({ src: uwuRandomSrc });
 const birthday = await getImage({ src: birthdaySrc });
 const cutieQuiz = await getImage({ src: cutieQuizSrc });
 const nekochat = await getImage({ src: nekochatSrc });
+
+const legacyMsc = await getImage({ src: legacyMscSrc });
+const prideMod = await getImage({ src: prideModSrc });
+const lunyasMiniMods = await getImage({ src: lunyasMiniModsSrc });
 
 const fediMeow = await getImage({ src: fediMeowSrc });
 const fediSummarizer = await getImage({ src: fediSummarizerSrc });
@@ -94,12 +101,6 @@ const fediStreaks = await getImage({ src: fediStreaksSrc });
                             <p>An application to mess up your Minecraft settings.</p>
                         </div>
                     </a>
-                    <a href="/project/neko/chat" style={`background-image: url(${nekochat.src});`}>
-                        <div class={projectStyles.project}>
-                            <h3>NekoChat</h3>
-                            <p>embeddable chat for any nekoweb website</p>
-                        </div>
-                    </a>
                     <a href="/project/uwurandom-rs">
                         <div class={projectStyles.project} style={`background-image: url(${uwuRandom.src});`}>
                             <h3>uwurandom-rs</h3>
@@ -110,6 +111,46 @@ const fediStreaks = await getImage({ src: fediStreaksSrc });
                         <div class={projectStyles.project} style={`background-image: url(${birthday.src});`}>
                             <h3>Birthday</h3>
                             <p>Forces you to wish birthday to anyone in your circle so you never forget.</p>
+                        </div>
+                    </a>
+                </div>
+                <br />
+
+                <h2>My Summer Car Mods</h2>
+                <div class={projectStyles.projectContainer}>
+                    <a href="/project/lunyas-mini-mods">
+                        <div class={projectStyles.project} style={`background-image: url(${lunyasMiniMods.src});`}>
+                            <h3>Lunya's Mini Mods</h3>
+                            <p>A bunch of mini mods for My Summer Car</p>
+                        </div>
+                    </a>
+                    <a href="/project/legacymsc">
+                        <div class={projectStyles.project} style={`background-image: url(${legacyMsc.src});`}>
+                            <h3>Legacy MSC</h3>
+                            <p>Brings current My Summer Car into older versions.</p>
+                        </div>
+                    </a>
+                    <a href="/project/pridemod">
+                        <div class={projectStyles.project} style={`background-image: url(${prideMod.src});`}>
+                            <h3>Pride Mod</h3>
+                            <p>Adds pride to My Summer Car</p>
+                        </div>
+                    </a>
+                </div>
+
+                <h2>Archived Projects</h2>
+                <p>A list of projects that are deprecated, archived or deleted. Downloads are available for certain projects.</p>
+                <div class={projectStyles.projectContainer}>
+                    <a href="/project/cutiequiz">
+                        <div class={projectStyles.project} style={`background-image: url(${cutieQuiz.src});`}>
+                            <h3>Cutie Quiz</h3>
+                            <p>Cutie Quiz is a quiz app whic determines how cute you are. Archived and shut down on Oct 31st.</p>
+                        </div>
+                    </a>
+                    <a href="/project/neko/chat" style={`background-image: url(${nekochat.src});`}>
+                        <div class={projectStyles.project}>
+                            <h3>NekoChat</h3>
+                            <p>embeddable chat for any nekoweb website</p>
                         </div>
                     </a>
                     <a href="/project/fedi/meow">
@@ -128,18 +169,6 @@ const fediStreaks = await getImage({ src: fediStreaksSrc });
                         <div class={projectStyles.project} style={`background-image: url(${fediStreaks.src});`}>
                             <h3>Fedi Streaks</h3>
                             <p>This bot counts consecutive days of you posting on fedi.</p>
-                        </div>
-                    </a>
-                </div>
-                <br />
-
-                <h2>Archived Projects</h2>
-                <p>A list of projects that are deprecated, archived or deleted. Downloads are available for certain projects.</p>
-                <div class={projectStyles.projectContainer}>
-                    <a href="/project/cutiequiz">
-                        <div class={projectStyles.project} style={`background-image: url(${cutieQuiz.src});`}>
-                            <h3>Cutie Quiz</h3>
-                            <p>Cutie Quiz is a quiz app whic determines how cute you are. Archived and shut down on Oct 31st.</p>
                         </div>
                     </a>
                 </div>

@@ -11,27 +11,25 @@ import Buttons from "@components/Buttons.astro";
 
 <!doctype html>
 <html lang="en">
-<head>
-    <Meta name="Lunya" description="Lunya is a cute girl programmer making projects, YouTube videos and sometimes streams." />
-    <Scripts />
-    <Cursor />
-</head>
+    <head>
+        <Meta name="Lunya" description="Lunya is a cute girl programmer making projects, YouTube videos and sometimes streams." />
+        <Scripts />
+        <Cursor />
+    </head>
 
-<body>
-<canvas id="background"></canvas>
-<!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
-<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-    <Header />
-    <main>
-        <h1>Admin panel :fire:</h1>
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Admin panel :fire:</h1>
 
-        <ul>
-            <li><a href="/admin/anonymousmessages">Manage anonymous posts</a></li>
-        </ul>
-    </main>
+                <p><i>nothing here yet...</i></p>
+            </main>
 
-    <Footer />
-</div>
-<script is:inline src="/scripts/background.js"></script>
-</body>
+            <Footer />
+        </div>
+        <script is:inline src="/scripts/background.js"></script>
+    </body>
 </html>

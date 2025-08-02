@@ -1,0 +1,151 @@
+---
+import "@styles/global.module.css";
+import Header from "@components/header.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+import Scripts from "@components/scripts.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="Legacy MSC" description="Revert the game to the old versions." />
+        <Scripts />
+        <Cursor />
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Legacy MSC</h1>
+                <p>Reverts the game into old versions.</p>
+                <p>The Good Old MSC mod combines all of the mods created by Akatsuki2555. It includes:</p>
+
+                <h3>Legacy Car</h3>
+                <ul>
+                    <li>Assemble Sounds</li>
+                    <li>Disable Door Sounds</li>
+                    <li>Disable Foot Sounds</li>
+                    <li>Disable Knob Sounds</li>
+                    <li>Old Dashboard</li>
+                    <li>Info Text</li>
+                    <li>Old Radio</li>
+                    <li>Shift Delay Change</li>
+                    <li>Key Sound Change</li>
+                    <li>Green Selections</li>
+                    <li>Engine Sound Type</li>
+                    <li>Old RPM Gauge</li>
+                    <li>Old Engine Revving</li>
+                </ul>
+
+                <h3>Legacy Van</h3>
+                <ul>
+                    <li>Remove Dashboard</li>
+                    <li>Old Steering Wheel</li>
+                    <li>Disable Horn</li>
+                    <li>Instant Shifting</li>
+                    <li>Old Engine Sound</li>
+                    <li>Old Body Texture</li>
+                    <li>Old Inside Texture</li>
+                </ul>
+
+                <h3>Legacy Muscle</h3>
+                <ul>
+                    <li>
+                        Old Skins:
+                        <ul>
+                            <li>2016</li>
+                            <li>Build 178</li>
+                            <li>Red</li>
+                            <li>Blue</li>
+                            <li>Black</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Old Wheels:
+                        <ul>
+                            <li>Wheels from 2016</li>
+                            <li>Wheels from Build 178</li>
+                            <li>Build &lt;176</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Old Tachometer:
+                        <ul>
+                            <li>Remove</li>
+                            <li>2016</li>
+                        </ul>
+                    </li>
+                    <li>Remove Scoop</li>
+                    <li>Old Engine</li>
+                    <li>Remove Linelock Button</li>
+                    <li>Remove Mudflaps</li>
+                    <li>Old Suspension</li>
+                    <li>Remove Rear Axle</li>
+                    <li>Red Interior</li>
+                    <li>Old License Plate</li>
+                    <li>Remove Yellow Bar</li>
+                    <li>Old Rear Wheels Size</li>
+                </ul>
+
+                <h3>Legacy Highway Cars</h3>
+                <p>Replaces the following vehicles:</p>
+                <ul>
+                    <li>VICTRO, MENACE</li>
+                    <li>SVOBODA</li>
+                    <li>POLSA</li>
+                </ul>
+                <p>
+                    <strong>Does not replace the truck and the new LAMOREs.</strong>
+                </p>
+
+                <h3>Legacy Tractor</h3>
+                <ul>
+                    <li>Old Engine Sound</li>
+                    <li>Old Engine Starting Sound</li>
+                    <li>Disable Dashboard</li>
+                    <li>Disable Forklift Arm</li>
+                    <li>Make the forklift white</li>
+                    <li>Old Starting System (Anti-Stall)</li>
+                    <li>Disable Radio</li>
+                </ul>
+
+                <h3>Legacy Truck</h3>
+                <ul>
+                    <li>Radio Position</li>
+                    <li>Engine Type</li>
+                    <li>Remove Pedals</li>
+                    <li>Remove Doors</li>
+                    <li>Replace Shit Tank with Logs</li>
+                    <li>Old Starting Sound</li>
+                    <li>Black Interior</li>
+                    <li>Red Exterior</li>
+                    <li>Hide License Plate</li>
+                    <li>Hide Mud Flaps</li>
+                </ul>
+
+                <h3>Legacy World</h3>
+                <ul>
+                    <li>Old Road</li>
+                    <li>Old Dirt Road</li>
+                    <li>Old Dirt Race Track</li>
+                    <li>Old Driveway Texture</li>
+                    <li>Remove Bridges <strong>(will not revert the terrain)</strong></li>
+                    <li>Remove Tree Walls</li>
+                </ul>
+
+                <p>
+                    <a href="https://www.nexusmods.com/mysummercar/mods/8947">
+                        <button>Download this mod on NexusMods</button>
+                    </a>
+                </p>
+            </main>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
+</html>

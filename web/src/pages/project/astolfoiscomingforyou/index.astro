@@ -6,16 +6,14 @@ import Footer from "@components/footer.astro";
 import Meta from "@components/meta.astro";
 import Cursor from "@components/cursor.astro";
 
-import safe1Src from './safe_1.png';
-import safe2Src from './safe_2.png';
-import evil1Src from './evil_1.png';
-import evil2Src from './evil_2.png';
-import {getImage} from "astro:assets";
+import safe1Src from "./safe_1.png";
+import safe2Src from "./safe_2.png";
+import { getImage } from "astro:assets";
+import Tab from "@components/Tab.astro";
+import Tabs from "@components/Tabs.astro";
 
 const safe1 = await getImage({ src: safe1Src });
 const safe2 = await getImage({ src: safe2Src });
-const evil1 = await getImage({ src: evil1Src });
-const evil2 = await getImage({ src: evil2Src });
 ---
 
 <!doctype html>
@@ -33,48 +31,33 @@ const evil2 = await getImage({ src: evil2Src });
             <Header />
             <main>
                 <h1>Astolfo is coming for you</h1>
-                <p>There are 2 variants of this project:</p>
-                <ol>
-                    <li>
-                        <p>The safe variant:</p>
-                        <div id="safeVariant">
-                    <button id="showSafeVariant">Show safe variant YouTube video (Shares some data with YouTube)
-                    </button>
-                        </div>
-                        <img src={safe1.src} alt="Window of Astolfo coming for you, with a countdown of kilometers" />
-                        <br />
-                        <img src={safe2.src} alt="Astolfo gives you lots of compliments" />
-                        <br />
-                        <a href="https://git.lunya.pet/Lunya/AstolfoIsComingForYou/releases">
-                            <button>Download the safe variant</button>
-                        </a>
-                    </li>
-                    <li>
-                        <p>The unsafe variant:</p>
-                        <div id="unsafeVariant">
-                    <button id="showUnsafeVariant">Show unsafe variant YouTube video (Shares some data with YouTube)
-                    </button>
-                        </div>
-                        <img src={evil1.src} alt="Window of angry Astolfo coming for you, with a countdown of kilometers" />
-                        <br />
-                        <img src={evil2.src} alt="Astolfo shuts down your machine in anger" />
-                        <br />
-                        <a href="https://git.lunya.pet/Lunya/AstolfoIsComingForYou/releases">
-                            <button>Download the unsafe variant</button>
-                        </a>
-                    </li>
-                </ol>
+
+                <Tabs>
+                    <Tab href="/project/astolfoiscomingforyou/safe" selected>Safe variant</Tab>
+                    <Tab href="/project/astolfoiscomingforyou/evil">Evil variant</Tab>
+                </Tabs>
+
+                <br />
+
+                <div id="safeVariant">
+                    <button id="showSafeVariant">Show safe variant YouTube video (Shares some data with YouTube) </button>
+                </div>
+                <img src={safe1.src} alt="Window of Astolfo coming for you, with a countdown of kilometers" />
+                <br />
+                <img src={safe2.src} alt="Astolfo gives you lots of compliments" />
+                <br />
+                <a href="https://git.lunya.pet/Lunya/AstolfoIsComingForYou/releases">
+                    <button>Download the safe variant</button>
+                </a>
             </main>
             <Footer />
         </div>
 
         <script is:inline type="text/javascript">
             $("#showSafeVariant").click(function () {
-        $("#safeVariant").html(`<iframe width="780" height="439" src="https://www.youtube-nocookie.com/embed/HkuCNFGXMNU?si=lDmf3C1Cf65gE5bL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
-            });
-
-            $("#showUnsafeVariant").click(function () {
-        $("#unsafeVariant").html(`<iframe width="780" height="439" src="https://www.youtube-nocookie.com/embed/ZtN1QqLx3ww?si=VaVwXDUo505gF9TS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
+                $("#safeVariant").html(
+                    `<iframe width="780" height="439" src="https://www.youtube-nocookie.com/embed/HkuCNFGXMNU?si=lDmf3C1Cf65gE5bL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+                );
             });
         </script>
         <script is:inline defer src="/scripts/background.js"></script>

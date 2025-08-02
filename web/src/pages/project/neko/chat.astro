@@ -20,8 +20,6 @@ import Cursor from "@components/cursor.astro";
                 padding: 2px;
             }
         </style>
-        <script type="text/javascript" defer src="https://nekochat.mldchan.dev/js/nekochat.js"></script>
-        <link rel="stylesheet" href="https://nekochat.mldchan.dev/css/nekochat.css" />
     </head>
 
     <body>
@@ -34,31 +32,13 @@ import Cursor from "@components/cursor.astro";
                 <br />
                 <br />
 
-                <h2>Try out NekoChat!</h2>
-                <br />
-
-                <div class="nekochat-container" style="width: 450px; height: 600px; position: relative !important; overflow-y: auto;">
-                    <div class="nekochat-chat-box">
-                        <div class="nekochat-message-list" id="nekochat-messages"></div>
-
-                        <form class="nekochat-message-form" method="POST" action="https://nekochat.mldchan.dev/chat" style="position: absolute; background-color: black;">
-                            <input type="text" id="username" name="username" placeholder="Enter your username" required />
-                            <textarea id="message" name="content" placeholder="Type your message here..." required></textarea>
-                            <button type="submit">Send Message</button>
-                            <span>Report abuse to <a href="mailto:lunya.pet@proton.me">lunya.pet@proton.me</a>.</span>
-                        </form>
-
-                        <!-- This allows more people to get to this project, please keep this! -->
-                        <a href="https://nekochat.mldchan.dev/" class="nekochat-add-me" style="position: absolute;">
-                            <button>+</button>
-                        </a>
-                    </div>
+                <div class="error">
+                    <p><strong>Nekochat is shutting down</strong></p>
+                    <p>After running for only about 4 months, the project is shutting down. The project is running on my old domain, which will expire sooner than later. The schedule is set on 1st of September, 2025.</p>
                 </div>
-                <br />
-                <br />
 
-                <h2>Embed nekochat in your website!</h2>
-                <p>learn how to <a href="https://nekochat.mldchan.dev/">embed the NekoChat widget</a> and <a href="https://nekochat.mldchan.dev/embedding/">style it</a>.</p>
+                <br />
+                <br />
             </main>
             <Footer />
         </div>

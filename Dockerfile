@@ -22,7 +22,6 @@ WORKDIR /build
 COPY go.mod .
 COPY go.sum .
 COPY main.go .
-COPY anonymousMessages.go .
 COPY admin.go .
 
 RUN go build
