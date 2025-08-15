@@ -118,15 +118,31 @@ function stars() {
     })();
 }
 
-function blackBackground() {
+function starsStatic() {
     var canvas = document.getElementById("background");
     var context = canvas.getContext("2d");
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    
 
-    context.fillStyle = "black";
-    context.fillRect(0, 0, canvas.width, canvas.height);
+    function draw() {
+        const rand = new Math.seedrandom('1');
+    
+        context.fillStyle = "black";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        context.fillStyle = "white";
+        for (let x = 0; x < canvas.width / 2; x++) {
+            for (let y = 0; y < canvas.height / 2; y++) {
+                const random = rand();
+                if (random > 0.999) {
+                    context.fillRect(x * 2, y * 2, 2, 2);
+                }
+            }
+        }
+    }
+
 
     document.onscroll = function () {
         const scrollPos = window.scrollY;
@@ -136,17 +152,20 @@ function blackBackground() {
     window.addEventListener("resize", function () {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        draw();
     });
+
+    draw();
 }
 
 if (!localStorage.getItem("stars")) {
-    localStorage.setItem("stars", "enable");
+    localStorage.setItem("stars", "disable");
 }
 
 if (localStorage.getItem("stars") === "enable") {
     console.log("Start stars");
     stars();
 } else {
-    console.log("Render black background");
-    blackBackground();
+    console.log("Render static background");
+    starsStatic();
 }
