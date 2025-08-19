@@ -23,6 +23,7 @@ import nekochatSrc from "./project/neko/chat.png";
 import legacyMscSrc from "./project/legacymsc/legacymsc.webp";
 import prideModSrc from "./project/pridemod/pridemod.webp";
 import lunyasMiniModsSrc from "./project/lunyas-mini-mods/lunyas-mini-mods.webp";
+import sodiboostSrc from "./project/sodiboost/sodiboost.png";
 
 import { getImage } from "astro:assets";
 
@@ -36,6 +37,7 @@ const uwuRandom = await getImage({ src: uwuRandomSrc });
 const birthday = await getImage({ src: birthdaySrc });
 const cutieQuiz = await getImage({ src: cutieQuizSrc });
 const nekochat = await getImage({ src: nekochatSrc });
+const sodiboost = await getImage({ src: sodiboostSrc });
 
 const legacyMsc = await getImage({ src: legacyMscSrc });
 const prideMod = await getImage({ src: prideModSrc });
@@ -87,6 +89,12 @@ const fediStreaks = await getImage({ src: fediStreaksSrc });
                         <div class={projectStyles.project} style={`background-image: url(${astolfoMod.src});`}>
                             <h3>Astolfo Mod</h3>
                             <p>A Minecraft mod that adds many non-binary, transgender and femboy characters to the game.</p>
+                        </div>
+                    </a>
+                    <a href="/project/sodiboost">
+                        <div class={projectStyles.project} style={`background-image: url(${sodiboost.src});`}>
+                            <h3>Sodiboost</h3>
+                            <p>A silly little mod about Sodiboo on fedi.</p>
                         </div>
                     </a>
                     <a href="/project/catgirlnonsense">
