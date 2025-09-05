@@ -24,6 +24,7 @@ import legacyMscSrc from "./project/legacymsc/legacymsc.webp";
 import prideModSrc from "./project/pridemod/pridemod.webp";
 import lunyasMiniModsSrc from "./project/lunyas-mini-mods/lunyas-mini-mods.webp";
 import sodiboostSrc from "./project/sodiboost/sodiboost.png";
+import catLikeBehaviourDetectedSrc from "./project/catlikebehaviourdetected/img1.png";
 
 import { getImage } from "astro:assets";
 
@@ -38,6 +39,7 @@ const birthday = await getImage({ src: birthdaySrc });
 const cutieQuiz = await getImage({ src: cutieQuizSrc });
 const nekochat = await getImage({ src: nekochatSrc });
 const sodiboost = await getImage({ src: sodiboostSrc });
+const catLikeBehaviourDetected = await getImage({ src: catLikeBehaviourDetectedSrc });
 
 const legacyMsc = await getImage({ src: legacyMscSrc });
 const prideMod = await getImage({ src: prideModSrc });
@@ -119,6 +121,12 @@ const fediStreaks = await getImage({ src: fediStreaksSrc });
                         <div class={projectStyles.project} style={`background-image: url(${birthday.src});`}>
                             <h3>Birthday</h3>
                             <p>Forces you to wish birthday to anyone in your circle so you never forget.</p>
+                        </div>
+                    </a>
+                    <a href="/project/catlikebehaviourdetected">
+                        <div class={projectStyles.project} style={`background-image: url(${catLikeBehaviourDetected.src});`}>
+                            <h3>Cat-Like Behaviour Detected</h3>
+                            <p>A joke program that shows a cat-like behaviour detected dialog.</p>
                         </div>
                     </a>
                 </div>
