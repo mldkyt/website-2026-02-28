@@ -34,3 +34,12 @@ go.work.sum
 # Build files from the website
 dist/
 data/
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
