@@ -1,0 +1,72 @@
+---
+import Header from "@components/header.astro";
+import "@styles/global.module.css";
+import Scripts from "@components/scripts.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="About me" description="Who I am, what I do and what I like/dislike" />
+        <Scripts />
+        <Cursor />
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>About me</h1>
+
+                <p><strong>Recommended that you read this before you interact with me.</strong></p>
+
+                <h2>Do Not Interact</h2>
+
+                <ul>
+                    <li>If your entire purpose of interacting with me is for satisfaction purposes</li>
+                    <li>If you're fascist, nazi, support MAPs, or you're a transphobic or homophobic bigot</li>
+                </ul>
+
+                <p>If you're mentioning jokes around me, please mark them as such by using tone tags.</p>
+
+                <p>
+                    Hi, I&apos;m Lunya, a silly transfem catgirl. I might be silly when posting. Sometimes too silly. If I&apos;m way too silly, please tell me. I write code and love to talk about programming. I also put videos on YouTube
+                    and PeerTube. Although my PeerTube storage is really limited so I flood YouTube with a lot of interesting videos but my PeerTube only gets what I like.
+                </p>
+
+                <p>
+                    I&apos;m okay with flirting whenever you ask if it&apos;s okay and I answer yes. I&apos;m completely fine to flirt as friends, however I won&apos;t enter any relationships. I may feel safer to flirt with some people more
+                    than with other people. I&apos;m pansexual, so I&apos;ll flirt regardless of what gender you are. I&apos;m also fine with using slurs when I know you for a while.
+                </p>
+
+                <h2>What I like</h2>
+
+                <ul>
+                    <li>Women, fem-adjacent creatures and critters and other genders but a bit less</li>
+                    <li>Yuri, women kissing and gay women in general</li>
+                    <li>Making software, and chatting about my projects</li>
+                    <li>Free software, sometimes contributing to it</li>
+                    <li>Linux</li>
+                </ul>
+
+                <h2>What I dislike</h2>
+
+                <ul>
+                    <li>Corporates and their bad decisions</li>
+                    <li>Microsoft Windows (seriously how can someone make an operating system this bad)</li>
+                    <li>Amazon and their DDoS bot</li>
+                </ul>
+
+                <p><i>(This page may be expanded in the future, once I discover more things about myself.)</i></p>
+            </main>
+
+            <Footer />
+        </div>
+        <script is:inline src="/scripts/background.js"></script>
+    </body>
+</html>
