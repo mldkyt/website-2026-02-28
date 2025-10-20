@@ -1,0 +1,551 @@
+---
+import Header from "@components/header.astro";
+import "@styles/global.module.css";
+import Scripts from "@components/scripts.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+
+import Buttons from "@components/Buttons.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="Lunya" description="Lunya is a cute girl programmer making projects, YouTube videos and sometimes streams." />
+        <Scripts />
+        <Cursor />
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Website Version History</h1>
+
+                <p>Here you can read human-written update messages about this website. Most of these are built from Git logs.</p>
+                <p>The footer displays the website build time, not the latest update time. The website might get rebuilt due to anything from security fixes, through server updates to dynamic content updates.</p>
+
+                <h2>2025-10-18</h2>
+
+                <ul>
+                    <li>Added this versions page, based on commit history. This is missing any commits before 2024.</li>
+                </ul>
+
+                <h2>2025-10-15</h2>
+
+                <ul>
+                    <li>Added an <a href="/about-me">about me</a> page</li>
+                </ul>
+
+                <h2>2025-10-06</h2>
+
+                <ul>
+                    <li>Added a blue gradient bar on the top of the website</li>
+                    <li>Fixed <a href="https://akabot.xyz/">Akabot</a> links on the home page</li>
+                </ul>
+
+                <h2>2025-09-05</h2>
+
+                <ul>
+                    <li>Added <a href="/project/catlikebehaviourdetected">Cat-Like Behaviour Detected</a></li>
+                </ul>
+
+                <h2>2025-09-01</h2>
+
+                <ul>
+                    <li>Refined the <a href="/guestbook">Guestbook</a> rules</li>
+                </ul>
+
+                <h2>2025-08-26</h2>
+
+                <ul>
+                    <li>Added Cache-Control for images on the website</li>
+                    <li>Added a bunch of buttons</li>
+                </ul>
+
+                <h2>2025-08-24</h2>
+
+                <ul>
+                    <li>Updated webrings</li>
+                </ul>
+
+                <h2>2025-08-19</h2>
+
+                <ul>
+                    <li>Added the <a href="/project/sodiboost">Sodiboost</a> Minecraft mod project</li>
+                </ul>
+
+                <h2>2025-08-17</h2>
+
+                <ul>
+                    <li>Updated dead links to fedi</li>
+                </ul>
+
+                <h2>2025-08-15</h2>
+
+                <ul>
+                    <li>Updated Astro 5.8 -&gt; 5.13</li>
+                    <li>Disable the background effect by default (you can turn this on in the footer :3)</li>
+                </ul>
+
+                <h2>2025-08-10</h2>
+
+                <ul>
+                    <li>Moved <a href="https://akabot.xyz">Akabot</a> to <a href="https://akabot.xyz">its own website</a></li>
+                </ul>
+
+                <h2>2025-08-02</h2>
+
+                <ul>
+                    <li>Replaced the guestbook with Atabook</li>
+                    <li>Removed anonymous messages (almost no one used this)</li>
+                    <li>Akabot is now pointing to the new Codeberg repository</li>
+                    <li>Added <a href="/projects/lunyas-mini-mods">Lunya&apos;s Mini Mods</a>, <a href="/projects/legacymsc">Legacy MSC</a> and <a href="/project/pridemod">Pride Mod</a> for My Summer Car</li>
+                    <li>Refined <a href="/donate">donation page</a></li>
+                </ul>
+
+                <h2>2025-06-27</h2>
+
+                <ul>
+                    <li>Nekosearch v2 was deprecated and removed from the website.</li>
+                </ul>
+
+                <h2>2025-06-20</h2>
+                <ul>
+                    <li>Added fediring</li>
+                    <li>Break backend and frontend apart for faster page updates</li>
+                    <li>Fix <a href="/guestbook">guestbook</a> and remove old blog posts</li>
+                </ul>
+
+                <h2>2025-06-19</h2>
+
+                <ul>
+                    <li>Docker builds</li>
+                    <li>Overhaul of the website, updating old pictures, replacing old information and other general information</li>
+                </ul>
+
+                <h2>2025-06-18</h2>
+
+                <ul>
+                    <li>Added anonymous messages</li>
+                </ul>
+
+                <h2>2025-06-17</h2>
+
+                <ul>
+                    <li>The website was rewritten with a faster, more memory efficient backend, and using this old style website instead of a modern, clunky, unusable mess</li>
+                </ul>
+
+                <h2>2025-06-15</h2>
+
+                <ul>
+                    <li>Removed Instagram link due to antitrust</li>
+                </ul>
+
+                <h2>2025-06-03</h2>
+
+                <ul>
+                    <li>Re-added blog</li>
+                </ul>
+
+                <h2>2025-06-01</h2>
+
+                <ul>
+                    <li>Added Nekochat image in project list</li>
+                    <li>Update image for website</li>
+                    <li>Update <a href="/social">socials</a> images</li>
+                    <li>Update username mldchan -&gt; Lunya (I think I was like 4 months behind lmao)</li>
+                </ul>
+
+                <h2>2025-04-18</h2>
+
+                <ul>
+                    <li>Added back <a href="/discord">Discord</a></li>
+                </ul>
+
+                <h2>2025-04-10</h2>
+                <ul>
+                    <li>Update <a href="/social">socials pages</a>, added Steam</li>
+                </ul>
+
+                <h2>2025-04-07</h2>
+                <ul>
+                    <li>Added a page for <a href="/button">my 88x31 button</a></li>
+                    <li>Remove My Summer Car projects</li>
+                </ul>
+
+                <h2>2025-04-06</h2>
+                <ul>
+                    <li>Added more <a href="/donate">donation</a> links around the website</li>
+                    <li>Added a <a href="/contact">contact</a> page</li>
+                    <li>Added a <a href="https://nekoweb.org/follow/lunya">Nekoweb follow button</a></li>
+                    <li>Update my username in a few places (mldchan -&gt; Lunya), although this wasn&apos;t complete</li>
+                    <li>Update outdated 88x31 button</li>
+                </ul>
+
+                <h2>2025-03-16</h2>
+                <ul>
+                    <li>Remove <a href="https://twitch.tv/velkyen">Velky</a> related stuff from the website</li>
+                </ul>
+
+                <h2>2025-03-13</h2>
+                <ul>
+                    <li>Luna -&gt; Lunya (Locations where this was changed prior to this commit were updated)</li>
+                </ul>
+
+                <h2>2025-03-13</h2>
+
+                <p>Sometimes I was scared of what would be happening, so I had a phase where I disguised myself under a different name and would hide any pride related stuff. Here's a version update which reverted such change.</p>
+
+                <ul>
+                    <li>Come out of the closet again</li>
+                </ul>
+
+                <h2>2025-03-09</h2>
+
+                <ul>
+                    <li>Theme updates</li>
+                    <li>Fix Nekochat widget</li>
+                </ul>
+
+                <h2>2025-03-08</h2>
+
+                <ul>
+                    <li>Added Nekochat (This project is now shut down)</li>
+                </ul>
+
+                <h2>2025-03-07</h2>
+
+                <ul>
+                    <li>Replace Astro 4.16 -&gt; 5.4 (This update is a bit late, but migrating major version was a bit interesting)</li>
+                </ul>
+
+                <h2>2025-03-04</h2>
+
+                <ul>
+                    <li>Enter closet</li>
+                    <li>Add Discord</li>
+                </ul>
+
+                <h2>2025-02-08</h2>
+
+                <ul>
+                    <li>Added a RSS feed generator script</li>
+                    <li>Rename from Emily -&gt; Luna (I had a name problem)</li>
+                </ul>
+
+                <h2>2025-01-20</h2>
+                w
+                <ul>
+                    <li>Rename from mldchan -&gt; Emily</li>
+                </ul>
+
+                <h2>2025-01-11</h2>
+
+                <ul>
+                    <li>Re-added <a href="https://baccyflap.com/noai/">No AI webring</a> links</li>
+                </ul>
+
+                <h2>2025-01-04</h2>
+
+                <ul>
+                    <li>RSS fixed and separated from website builds</li>
+                </ul>
+
+                <h2>2025-01-03</h2>
+
+                <ul>
+                    <li>Added an RSS generator, but it was broken in this version (and it's not used ever since I stopped updating my old website and is instead updated manually)</li>
+                </ul>
+
+                <h2>2024-12-26</h2>
+
+                <ul>
+                    <li>Added usernames to <a href="/social">socials</a></li>
+                    <li>Added privacy and terms of service for my old main fedi instance (which is now down)</li>
+                </ul>
+
+                <h2>2024-12-23</h2>
+
+                <ul>
+                    <li>Added My Summer Car mods without downloads, only source code</li>
+                </ul>
+
+                <h2>2024-12-19</h2>
+
+                <ul>
+                    <li>Added <a href="/project/fedi/meow">Fedi Meow</a>, <a href="/project/fedi/streaks">Fedi Streaks</a> and <a href="/project/fedi/summary">Fedi Summary</a> projects</li>
+                </ul>
+
+                <h2>2024-12-16</h2>
+
+                <ul>
+                    <li>Added a Christmas theme</li>
+                </ul>
+
+                <h2>2024-12-11</h2>
+
+                <ul>
+                    <li>Fix pronouns in a few more places</li>
+                </ul>
+
+                <h2>2024-12-05</h2>
+
+                <ul>
+                    <li>Images are optimized for size, reducing website size from 30 MB to 3 MB</li>
+                    <li>Updated the list of services on my website</li>
+                </ul>
+
+                <h2>2024-12-01</h2>
+
+                <ul>
+                    <li>Nekosearch v2 was added</li>
+                </ul>
+
+                <h2>2024-11-28</h2>
+
+                <ul>
+                    <li>Renamed <a href="/discord">mldchan Discord</a> -&gt; <a href="/discord">Akabot Support</a></li>
+                </ul>
+
+                <h2>2024-11-25</h2>
+
+                <ul>
+                    <li>Fix <a href="/project/catgirlnonsense">Catgirl Nonsense</a></li>
+                </ul>
+
+                <h2>2024-11-11</h2>
+
+                <ul>
+                    <li>Update <a href="/social">socials</a>, <a href="/donate">donations</a>, <a href="/services">services</a> and remove blog</li>
+                </ul>
+
+                <h2>2024-11-07</h2>
+
+                <ul>
+                    <li>New build system which would auto upload the website to Nekoweb on my old Gitlab instance</li>
+                    <li>Deprecate Cutie Quiz</li>
+                </ul>
+
+                <h2>2024-10-29</h2>
+
+                <ul>
+                    <li>Akabot 4.0 release notes were published</li>
+                </ul>
+
+                <h2>2024-10-28</h2>
+
+                <ul>
+                    <li>First update available on mldchan.dev (old domain)</li>
+                    <li>Added buttons: Trns rights, Yokoso approved</li>
+                    <li>Specify sizes of images</li>
+                </ul>
+
+                <h2>2024-10-23</h2>
+
+                <ul>
+                    <li>Velky SMP base got changed to Velky SMP story</li>
+                </ul>
+
+                <h2>2024-10-22</h2>
+
+                <ul>
+                    <li>
+                        Added a few projects: <a href="/project/birthday">Birthday</a>, <a href="/project/mcfuck">MCFuck</a>, <a href="/project/uwurandom-rs">uwurandom-rs</a>
+                        (these are projects from my drive, or projects forgotten to be added)
+                    </li>
+                    <li>Removed small projects page</li>
+                </ul>
+
+                <h2>2024-10-18</h2>
+
+                <ul>
+                    <li>Fixed <a href="/guestbook">guestbook</a> not displaying correctly</li>
+                </ul>
+
+                <h2>2024-10-08</h2>
+
+                <ul>
+                    <li>Updated Akabot&apos;s project page</li>
+                </ul>
+
+                <h2>2024-09-30</h2>
+
+                <ul>
+                    <li>Added cutie quiz (Sep 30 - Oct 30)</li>
+                    <li>Changed the last references to Akatsuki2555 to mldchan in the website</li>
+                    <li>Add background effects</li>
+                    <li>Updated 88x31</li>
+                    <li>Update a few dependencies</li>
+                </ul>
+
+                <h2>2024-09-16</h2>
+
+                <ul>
+                    <li>Discord ban appeals were changed</li>
+                </ul>
+
+                <h2>2024-09-09</h2>
+
+                <ul>
+                    <li>Website added to projects, fixed banners</li>
+                    <li>Fix background effect not being able to be disabled</li>
+                </ul>
+
+                <h2>2024-09-08</h2>
+
+                <ul>
+                    <li>Added ability to disable the background effect</li>
+                    <li>Reduced the amount of stars in the background effect</li>
+                    <li>Optimize the background effect</li>
+                </ul>
+
+                <h2>2024-09-07</h2>
+
+                <ul>
+                    <li>Added background effect</li>
+                </ul>
+
+                <h2>2024-09-05</h2>
+
+                <ul>
+                    <li>Moved <a href="/social">socials</a> to <a href="https://e-z.bio/lunya">e-z.bio</a></li>
+                </ul>
+
+                <h2>2024-09-02</h2>
+
+                <ul>
+                    <li>Added a website icon</li>
+                    <li>Rename <a href="/project/astolfomod">Astolfo Forge</a> to <a href="/project/astolfomod">Astolfo Mod</a></li>
+                    <li>Remove Astolfo Resource Pack</li>
+                </ul>
+
+                <h2>2024-09-01</h2>
+
+                <ul>
+                    <li>Replaced <a href="/guestbook">guestbook</a> with <a href="https://atabook.org">Atabook</a></li>
+                    <li>Added a few 88x31 buttons</li>
+                    <li>Enby phase start (This got gradually removed through updates)</li>
+                    <li>Added social icons in the header</li>
+                </ul>
+
+                <h2>2024-08-29</h2>
+
+                <ul>
+                    <li>Removed My Summer Car stuff</li>
+                    <li>Change (most) Akatsuki2555 to mldkyt</li>
+                </ul>
+
+                <h2>2024-08-20</h2>
+
+                <ul>
+                    <li>Added a rule about not harassing other members on the guestbook</li>
+                    <li>Added Discord raid mention to a "Quitting My Summer Car modding" blog post (<a href="https://fedi.lunya.pet/notes/a1tsm8wt2p">ref</a>)</li>
+                </ul>
+
+                <h2>2024-08-18</h2>
+
+                <ul>
+                    <li>Updated Astolfo Forge mod description</li>
+                    <li>Added VelkySMP monitor back to the website (now defunct)</li>
+                </ul>
+
+                <h2>2024-08-16</h2>
+
+                <ul>
+                    <li>Added VelkySMP base</li>
+                </ul>
+
+                <h2>2024-08-13</h2>
+
+                <ul>
+                    <li>Fixed Instagram dead link</li>
+                    <li>Fixed TikTok wrong label</li>
+                </ul>
+
+                <h2>2024-08-10</h2>
+
+                <ul>
+                    <li>Added a video to AstolfOS</li>
+                </ul>
+
+                <h2>2024-08-07</h2>
+
+                <ul>
+                    <li>Added videos to <a href="/project/astolfoiscomingforyou">Astolfo is coming for you</a></li>
+                    <li>Starting to question am I NB?</li>
+                </ul>
+
+                <h2>2024-08-06</h2>
+
+                <ul>
+                    <li>Removed /now</li>
+                    <li>Added a video for <a href="/project/astolfomod">Astolfo Forge mod</a></li>
+                </ul>
+
+                <h2>2024-08-04</h2>
+
+                <ul>
+                    <li>Added <a href="https://akabot.xyz/privacy">Akabot Privacy Policy</a></li>
+                </ul>
+
+                <h2>2024-07-31</h2>
+
+                <ul>
+                    <li>Added a <a href="/discord">Discord</a> page</li>
+                    <li>Moved all scripts to my own host (increases bandwidth, but also security)</li>
+                    <li>Removed NEW! from the <a href="/guestbook">guestbook</a> button in the header</li>
+                </ul>
+
+                <h2>2024-07-26</h2>
+
+                <ul>
+                    <li>Added small projects page</li>
+                    <li>Moved MSC mods to small projects</li>
+                    <li>Redesign the home page</li>
+                </ul>
+
+                <h2>2024-07-14</h2>
+
+                <ul>
+                    <li>Added TikTok to the <a href="/social">socials</a> page</li>
+                    <li>
+                        Removed <a href="/project/pridemod">Pride Mod (previously LGBTQ+ Pride Flags, OwOifier)</a>, <a href="/project/legacymsc"
+                            >Legacy MSC (previously OldCarSounds, Old Ferndale, Old Hayosiko, Old Highway Cars, Old Kekmet, Old Truck Sounds, Old World separately)</a
+                        >, <a href="/project/lunyasminimods">Lunya&apos;s Mini Mods (previously MSC Tweaks, Water Bills, Highway Car Breakdowns, Infinite Nitrous)</a> from the website
+                    </li>
+                    <li>Removed Velkonya</li>
+                    <li>Added TikTok</li>
+                </ul>
+
+                <h2>2024-07-09</h2>
+
+                <ul>
+                    <li>Added <a href="/discord">Discord</a> to the header</li>
+                    <li>Added <a href="/donate">Ko-fi</a> to <a href="/social">socials</a></li>
+                </ul>
+
+                <h2>2024-07-06</h2>
+
+                <ul>
+                    <li>Made pride header only show during pride month</li>
+                    <li>Removed X account from <a href="/social">socials</a></li>
+                    <li>Fixes to <a href="/discord">Discord</a> rules</li>
+                    <li>Replaced OldCarSounds, Old Ferndale, Old Hayosiko, Old Highway Cars, Old Kekmet, Old Truck Sounds, Old World with GoodOldMSC (now <a href="/project/legacymsc">Legacy MSC</a>)</li>
+                    <li>Added links to a few MSC mods to the home page</li>
+                </ul>
+
+                <p>Updates past 2024-07-01 are shown. Previous updates didn't use Git.</p>
+
+                <br />
+                <br />
+            </main>
+
+            <Footer />
+        </div>
+        <script is:inline src="/scripts/background.js"></script>
+    </body>
+</html>
