@@ -11,12 +11,12 @@ import { getImage } from "astro:assets";
 import youtubeOrig from "./youtube.png";
 import forgejoOrig from "./forgejo.png";
 import twitchOrig from "./twitch.png";
-import sharkeyOrig from "./sharkey.png";
+import akkomaOrig from "./akkoma.png";
 
 const youtube = await getImage({ src: youtubeOrig });
 const forgejo = await getImage({ src: forgejoOrig });
 const twitch = await getImage({ src: twitchOrig });
-const sharkey = await getImage({ src: sharkeyOrig });
+const akkoma = await getImage({ src: akkomaOrig });
 ---
 
 <!doctype html>
@@ -52,7 +52,7 @@ const sharkey = await getImage({ src: sharkeyOrig });
                         </div>
                     </a>
                     <a href="https://f.lunya.pet/users/lunya">
-                        <div class={socialStyles.social} style={`background-image: url(${sharkey.src});`}>
+                        <div class={socialStyles.social} style={`background-image: url(${akkoma.src});`}>
                             <h3>The Fediverse (@lunya@f.lunya.pet)</h3>
                         </div>
                     </a>
