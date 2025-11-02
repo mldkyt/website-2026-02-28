@@ -24,6 +24,7 @@ func main() {
 	http.HandleFunc("/", cache(fs.ServeHTTP))
 
 	registerAdminHandlers()
+	registerApiHandlers()
 
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {

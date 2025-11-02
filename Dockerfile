@@ -15,7 +15,7 @@ COPY ./web/tsconfig.json .
 
 RUN pnpm build
 
-FROM golang:1.24-alpine3.21 AS build-server
+FROM golang:1.25-alpine AS build-server
 
 WORKDIR /build
 
@@ -23,6 +23,7 @@ COPY go.mod .
 COPY go.sum .
 COPY main.go .
 COPY admin.go .
+COPY api.go .
 
 RUN go build
 
