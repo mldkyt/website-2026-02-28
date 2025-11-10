@@ -86,7 +86,7 @@ func registerApiHandlers() {
 		db, err := openDB()
 
 		if err != nil {
-			http.Error(w, "Unable to rw db", http.StatusInternalServerError)
+			http.Error(w, fmt.Sprint("Unable to rw db: ", err), http.StatusInternalServerError)
 			return
 		}
 
