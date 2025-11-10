@@ -83,8 +83,10 @@ func main() {
 	registerAdminHandlers()
 	registerApiHandlers()
 
+	http.HandleFunc("/", http.HandlerFunc(HandleWebsite))
+
 	println("Starting website")
-	err := http.ListenAndServe(":8080", http.HandlerFunc(HandleWebsite))
+	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		panic(err)
 	}
