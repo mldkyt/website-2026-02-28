@@ -1,0 +1,67 @@
+---
+import Header from "@components/header.astro";
+import "@styles/global.module.css";
+import Scripts from "@components/scripts.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+import Buttons from "@components/Buttons.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="Lunya's Button" description="Lunya finally made an 88x31 button for her website! Add it to your website and link back when you do so!" />
+        <Scripts />
+        <Cursor />
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>IRC</h1>
+
+                <p>I have an IRC server now! Tune in on <a href="https://chat.lunya.pet">chat.lunya.pet</a>! Currently only available on web.</p>
+
+                <h2>Connecting</h2>
+
+                <ol>
+                    <li>Access <a href="https://chat.lunya.pet">chat.lunya.pet</a>.</li>
+                    <li>Set your nick and username.</li>
+                    <li>Click <code>Connect</code></li>
+                </ol>
+
+                <br />
+                <h2>Registering an account</h2>
+
+                <p>You can choose any nickname you want, however, if you want to, you can register an account. To register:</p>
+
+                <ol>
+                    <li>Click on the <code>Meow</code> server on the left.</li>
+                    <li>Enter: <code>/ns register &lt;password&gt;</code> with the password bit replaced for your password.</li>
+                    <li>You are now registered!</li>
+                </ol>
+
+                <br />
+                <h2>Logging in to your account</h2>
+
+                <ol>
+                    <li>Click on the <code>Meow</code> server on the left.</li>
+                    <li>Enter: <code>/ns identify &lt;username&gt; &lt;password&gt;</code> with the username you registered as and password bit replaced for your password.</li>
+                    <li>You are now logged in!</li>
+                </ol>
+
+                <br />
+                <h2>Viewing message history</h2>
+
+                <p>If message history doesn&apos;t appear, please try running <code>/rejoin #general</code>. Any new channels joined (found on project pages) will have history loaded.</p>
+            </main>
+
+            <Footer />
+        </div>
+        <script is:inline src="/scripts/background.js"></script>
+    </body>
+</html>

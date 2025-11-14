@@ -6,12 +6,12 @@ import Meta from "@components/meta.astro";
 import Cursor from "@components/cursor.astro";
 import Scripts from "@components/scripts.astro";
 
-import configSrc from './config.png';
-import addSrc from './add.png';
-import {getImage} from "astro:assets";
+import configSrc from "./config.png";
+import addSrc from "./add.png";
+import { getImage } from "astro:assets";
 
-const config = await getImage({src: configSrc});
-const add = await getImage({src: addSrc});
+const config = await getImage({ src: configSrc });
+const add = await getImage({ src: addSrc });
 ---
 
 <!doctype html>
@@ -29,24 +29,29 @@ const add = await getImage({src: addSrc});
             <Header />
             <main>
                 <h1>Birthday</h1>
-                <p>
-                    Forces you to wish birthday to anyone in your circle so you never forget.
-                </p>
+                <p>Forces you to wish birthday to anyone in your circle so you never forget.</p>
 
                 <h2>Configuration</h2>
                 <p>Running the app with <code>/config</code> as a parameter will show a configuration window.</p>
-                <img src={config.src} alt="Configuration Window">
-                <img src={add.src} alt="Add new birthday Window">
+                <img src={config.src} alt="Configuration Window" />
+                <img src={add.src} alt="Add new birthday Window" />
 
                 <p>To add a new birthday, click on Actions &gt; Add new birthday.</p>
-        <p><strong>Don't forget to save your birthdays before exiting the application! File &gt; Save changes</strong>
-        </p>
-        <p>Please note that because of this app being old, there is a link pointing to mldkyt.com, which doesn't
-            work.</p>
+                <p><strong>Don't forget to save your birthdays before exiting the application! File &gt; Save changes</strong></p>
+                <p>Please note that because of this app being old, there is a link pointing to mldkyt.com, which doesn't work.</p>
 
                 <p>
                     <a href="https://git.lunya.pet/Lunya/Birthday/releases">
                         <button>Download latest release</button>
+                    </a>
+                    <a href="https://forums.lunya.pet/viewforum.php?f=12">
+                        <button>Discuss the project (Forums)</button>
+                    </a>
+                    <a href="/discord">
+                        <button>Discuss the project (Discord)</button>
+                    </a>
+                    <a href="/irc">
+                        <button>Discuss the project (IRC)</button>
                     </a>
                 </p>
             </main>
