@@ -6,12 +6,9 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"os"
 	"strings"
 	"time"
 
-	"gorm.io/driver/postgres"
-	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )
@@ -24,36 +21,6 @@ type ViewHistory struct {
 type ViewExpiry struct {
 	IP     string `gorm:"primaryKey"`
 	Expiry time.Time
-}
-
-func openDB() (db *gorm.DB, err error) {
-	dbMode := os.Getenv("DB_BACKEND")
-
-	switch dbMode {
-	case "sqlite":
-		{
-			dbPath := os.Getenv("DB_SQLITE_PATH")
-
-			return gorm.Open(sqlite.Open(dbPath), &gorm.Config{})
-		}
-	case "postgres":
-		{
-			dbHost := os.Getenv("DB_POSTGRES_HOST")
-			dbUser := os.Getenv("DB_POSTGRES_USER")
-			dbPassword := os.Getenv("DB_POSTGRES_PASSWORD")
-			dbName := os.Getenv("DB_POSTGRES_NAME")
-			dbPort := os.Getenv("DB_POSTGRES_PORT")
-			if strings.TrimSpace(dbPort) == "" {
-				dbPort = "5432"
-			}
-
-			dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", dbHost, dbUser, dbPassword, dbName, dbPort)
-			return gorm.Open(postgres.Open(dsn), &gorm.Config{})
-		}
-
-	}
-
-	return nil, fmt.Errorf("error: unsupported DB mode: %s", dbMode)
 }
 
 func migrate() {

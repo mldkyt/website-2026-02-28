@@ -19,6 +19,17 @@ import Cursor from "@components/cursor.astro";
                 background-image: linear-gradient(to bottom, rgb(136, 0, 0) 20%, rgb(78, 0, 0) 50%, rgb(150, 1, 1) 100%);
                 padding: 2px;
             }
+
+            .success {
+                border: 1px solid rgb(102, 255, 0);
+                background-image: linear-gradient(to bottom, rgb(0, 136, 0) 20%, rgb(3, 78, 0) 50%, rgb(6, 150, 1) 100%);
+                padding: 2px;
+            }
+
+            #mcaptcha__widget-container {
+                width: 400px;
+                height: 70px;
+            }
         </style>
     </head>
 
@@ -53,12 +64,70 @@ import Cursor from "@components/cursor.astro";
 
                 <br />
 
-                <iframe src="https://lunya.atabook.org" frameborder="0" width="800" height="600"></iframe>
+                {"[[if .SubmitSuccess]]"}
+                <div class="success">
+                    <span>Your guestbook post was submitted, please wait for the owner of the guestbook to approve your post :3</span>
+                </div>
+                {"[[end]]"}
+
+                <div style="border: 2px solid white; padding: 4px;">
+                    <h2>Create a post</h2>
+
+                    <form method="post" action="/guestbook">
+                        <label for="username">Username</label>
+                        <br />
+                        <input type="text" name="username" id="username" style="width: 400px;" />
+
+                        <br />
+
+                        <label for="message" style="width: 400px;">Message</label>
+                        <br />
+                        <textarea name="message" id="message" cols="60" rows="5"></textarea>
+
+                        <br />
+                        <br />
+
+                        <!-- mCaptcha -->
+                        <label data-mcaptcha_url="https://captcha.lunya.pet/widget/?sitekey=vRm5tB2mL5PbzfsdJBYgNeCUYiTYDe9a" for="mcaptcha__token" id="mcaptcha__token-label">
+                            mCaptcha authorization token.
+
+                            <a href="https://mcaptcha.org/docs/user-manual/how-to-mcaptcha-without-js/">Instructions</a>.
+
+                            <input type="text" name="mcaptcha__token" id="mcaptcha__token" />
+                        </label>
+
+                        <div id="mcaptcha__widget-container"></div>
+
+                        <script src="https://unpkg.com/@mcaptcha/vanilla-glue@0.1.0-rc2/dist/index.js"></script>
+
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
 
                 <br />
+
+                <h2>Posts</h2>
+
+                <div>
+                    {"[[range .Items]]"}
+                    <div style="border: 1px solid white; padding: 2px; margin: 2px;">
+                        <h3>[[.Name]]</h3>
+                        <p style="margin: 0; margin-left: 4px;">[[.Message]]</p>
+                        <p style="margin: 0; margin-left: 4px;"><small>[[.CreatedAt]]</small></p>
+                        {"[[if .HasReply]]"}
+                        <div style="border: 1px solid white; padding: 2px; margin: 2px;">
+                            <p style="margin: 0; margin-left: 4px;"><strong>Reply by post author:</strong></p>
+                            <p style="margin: 0; margin-left: 4px;">[[.Reply]]</p>
+                        </div>
+                        {"[[end]]"}
+                    </div>
+                    {"[[end]]"}
+
+                    <br />
+                </div>
+                <Footer />
             </main>
-            <Footer />
+            <script is:inline src="/scripts/background.js"></script>
         </div>
-        <script is:inline src="/scripts/background.js"></script>
     </body>
 </html>
