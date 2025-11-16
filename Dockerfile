@@ -24,6 +24,7 @@ COPY go.sum .
 COPY main.go .
 COPY admin.go .
 COPY api.go .
+COPY guestbook.go .
 
 RUN go build
 
