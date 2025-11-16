@@ -114,7 +114,7 @@ func registerGuestbookHandlers() {
 			}
 
 			var item GuestbookItem
-			result := db.Model(&GuestbookItem{}).Where("ip = ?", ip).Where("approved = ?", 0).First(&item)
+			result := db.Where("ip = ?", ip).Where("approved = ?", false).First(&item)
 			if !errors.Is(result.Error, gorm.ErrRecordNotFound) {
 				http.Error(w, "Already filled out by you, please wait for approval before filling out again", http.StatusInternalServerError)
 				return
