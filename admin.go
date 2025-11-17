@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
@@ -277,6 +279,182 @@ func registerAdminHandlers() {
 			UnapprovedPosts: unapprovedItems,
 			Bans:            bansItems,
 			ApprovedPosts:   existingPostsItems,
+		})
+	})
+
+	adminAnonymousMessagesTemplate := template.Must(template.New("adminAnonymousMessage").Delims("[[", "]]").ParseFiles("dist/admin/anonymousMessages/index.html"))
+
+	http.HandleFunc("/admin/anonymousmessages", func(w http.ResponseWriter, r *http.Request) {
+		user, pass, ok := r.BasicAuth()
+		if !ok || user != os.Getenv("ADMIN_USER") || pass != os.Getenv("ADMIN_PASS") {
+			w.Header().Set("WWW-Authenticate", `Basic realm="restricted", charset="UTF-8"`)
+			http.Error(w, "Unauthorized", http.StatusUnauthorized)
+			return
+		}
+
+		db, err := openDB()
+		if err != nil {
+			http.Error(w, "unable to open DB", http.StatusInternalServerError)
+			return
+		}
+
+		// Post
+		if r.Method == "POST" {
+			err := r.ParseForm()
+			if err != nil {
+				fmt.Println(err)
+				http.Redirect(w, r, "/admin/anonymousmessages", http.StatusSeeOther)
+				return
+			}
+
+			id, err := strconv.Atoi(r.FormValue("id"))
+			if err != nil {
+				fmt.Println(err)
+				http.Redirect(w, r, "/admin/anonymousmessages", http.StatusSeeOther)
+				return
+			}
+
+			var question AnonymousMessage
+			result := db.First(&question, "id = ?", id)
+			if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+				fmt.Println(result.Error)
+				http.Redirect(w, r, "/admin/anonymousmessages", http.StatusSeeOther)
+				return
+			}
+
+			payload, err := json.Marshal(struct {
+				CW   string `json:"cw"`
+				Text string `json:"text"`
+			}{
+				CW:   "Anonymous Message Reply",
+				Text: fmt.Sprintf("> %s\n%s", question.Message, r.FormValue("reply")),
+			})
+
+			if err != nil {
+				fmt.Println(err)
+				http.Redirect(w, r, "/admin/anonymousmessages", http.StatusSeeOther)
+				return
+			}
+
+			req, err := http.NewRequest(http.MethodPost, fmt.Sprintf("https://%s/api/notes/create", os.Getenv("MISSKEY_INSTANCE")), bytes.NewBuffer(payload))
+			req.Header.Set("Content-Type", "application/json")
+			req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", os.Getenv("MISSKEY_TOKEN")))
+			if err != nil {
+				fmt.Println(err)
+				http.Redirect(w, r, "/admin/anonymousmessages", http.StatusSeeOther)
+				return
+			}
+
+			res, err := http.DefaultClient.Do(req)
+			if err != nil {
+				fmt.Println(err)
+				http.Redirect(w, r, "/admin/anonymousmessages", http.StatusSeeOther)
+				return
+			}
+
+			if res.StatusCode != http.StatusOK {
+				fmt.Println("Status code is NOT ok: ", res.Status)
+				http.Redirect(w, r, "/admin/anonymousmessages", http.StatusSeeOther)
+				return
+			}
+
+			db.Delete(&AnonymousMessage{}, "id = ?", question.ID)
+			http.Redirect(w, r, "/admin/anonymousmessages", http.StatusSeeOther)
+		}
+
+		query := r.URL.Query()
+
+		// Ban
+		if query.Has("ban") {
+			id, err := strconv.Atoi(query.Get("ban"))
+			if err != nil {
+				http.Redirect(w, r, "/admin/anonymousmessages", http.StatusTemporaryRedirect)
+				return
+			}
+
+			var item AnonymousMessage
+			result := db.First(&item, "id = ?", id)
+			if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+				http.Redirect(w, r, "/admin/anonymousmessages", http.StatusTemporaryRedirect)
+				return
+			}
+
+			db.Model(&AnonymousMessageBan{}).Create(&AnonymousMessageBan{
+				IP: item.IP,
+			})
+
+			db.Delete(&item)
+
+			http.Redirect(w, r, "/admin/anonymousmessages", http.StatusTemporaryRedirect)
+			return
+		}
+
+		// Unban
+		if query.Has("unban") {
+			id, err := strconv.Atoi(query.Get("unban"))
+			if err != nil {
+				http.Redirect(w, r, "/admin/anonymousmessages", http.StatusTemporaryRedirect)
+				return
+			}
+
+			db.Delete(&AnonymousMessageBan{}, "id = ?", id)
+
+			http.Redirect(w, r, "/admin/anonymousmessages", http.StatusTemporaryRedirect)
+			return
+		}
+
+		var anonymousMessages []AnonymousMessage
+		db.Find(&anonymousMessages)
+
+		var anonymousMessagesItems []struct {
+			ID      uint
+			Message string
+			IP      string
+		}
+
+		for _, v := range anonymousMessages {
+			anonymousMessagesItems = append(anonymousMessagesItems, struct {
+				ID      uint
+				Message string
+				IP      string
+			}{
+				ID:      v.ID,
+				Message: v.Message,
+				IP:      v.IP,
+			})
+		}
+
+		var bans []AnonymousMessageBan
+		db.Find(&bans)
+
+		var bansItems []struct {
+			ID uint
+			IP string
+		}
+
+		for _, v := range bans {
+			bansItems = append(bansItems, struct {
+				ID uint
+				IP string
+			}{
+				ID: v.ID,
+				IP: v.IP,
+			})
+		}
+
+		adminAnonymousMessagesTemplate.ExecuteTemplate(w, "index.html", struct {
+			Messages []struct {
+				ID      uint
+				Message string
+				IP      string
+			}
+			Bans []struct {
+				ID uint
+				IP string
+			}
+		}{
+			Messages: anonymousMessagesItems,
+			Bans:     bansItems,
 		})
 	})
 }

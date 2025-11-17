@@ -8,4 +8,4 @@ pnpm build || exit 1
 
 popd
 
-go run main.go admin.go api.go guestbook.go
+go run main.go admin.go api.go guestbook.go anonymousMessages.go

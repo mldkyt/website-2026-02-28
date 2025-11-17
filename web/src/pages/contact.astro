@@ -13,6 +13,24 @@ import Cursor from "@components/cursor.astro";
         <Meta name="Lunya" description="Lunya is a cute girl programmer making projects, YouTube videos and sometimes streams." />
         <Scripts />
         <Cursor />
+        <style>
+            .error {
+                border: 1px solid red;
+                background-image: linear-gradient(to bottom, rgb(136, 0, 0) 20%, rgb(78, 0, 0) 50%, rgb(150, 1, 1) 100%);
+                padding: 2px;
+            }
+
+            .success {
+                border: 1px solid rgb(102, 255, 0);
+                background-image: linear-gradient(to bottom, rgb(0, 136, 0) 20%, rgb(3, 78, 0) 50%, rgb(6, 150, 1) 100%);
+                padding: 2px;
+            }
+
+            #mcaptcha__widget-container {
+                width: 400px;
+                height: 70px;
+            }
+        </style>
     </head>
 
     <body>
@@ -22,6 +40,42 @@ import Cursor from "@components/cursor.astro";
             <Header />
             <main>
                 <h1>Contact Lunya :3</h1>
+
+                <h2>Send an Anonymous Message</h2>
+                {"[[if .IsError]]"}
+                <div class="error">
+                    <span>Error: [[.Error]]</span>
+                </div>
+                {"[[end]]"}
+                {"[[if .SentAnonymousMessage]]"}
+                <div class="success">
+                    <span>Your anonymous message was sent :3</span>
+                </div>
+                {"[[end]]"}
+                <form method="post" action="/contact">
+                    <label for="message">Message: </label>
+                    <br />
+                    <br />
+                    <textarea name="message" id="message" placeholder="Just arrived at Luna Nova Academy" rows="5" cols="60"></textarea>
+                    <br />
+                    <br />
+
+                    <!-- mCaptcha -->
+                    <label data-mcaptcha_url="https://captcha.lunya.pet/widget/?sitekey=vRm5tB2mL5PbzfsdJBYgNeCUYiTYDe9a" for="mcaptcha__token" id="mcaptcha__token-label">
+                        mCaptcha authorization token.
+
+                        <a href="https://mcaptcha.org/docs/user-manual/how-to-mcaptcha-without-js/">Instructions</a>.
+
+                        <input type="text" name="mcaptcha__token" id="mcaptcha__token" />
+                    </label>
+
+                    <div id="mcaptcha__widget-container"></div>
+
+                    <script src="https://unpkg.com/@mcaptcha/vanilla-glue@0.1.0-rc2/dist/index.js"></script>
+
+                    <br />
+                    <button type="submit">Send</button>
+                </form>
 
                 <br />
                 <h2>Community</h2>

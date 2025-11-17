@@ -118,6 +118,7 @@ func main() {
 	registerGuestbookHandlers()
 	registerAdminHandlers()
 	registerApiHandlers()
+	registerAnonymousMessages()
 
 	http.HandleFunc("/", http.HandlerFunc(HandleWebsite))
 
