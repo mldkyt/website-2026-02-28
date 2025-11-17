@@ -52,8 +52,6 @@ func HandleWebsite(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	println(r.URL.String())
-
 	if strings.HasSuffix(r.URL.Path, "/") && r.URL.Path != "/" {
 		url_without_end, _ := strings.CutSuffix(r.URL.Path, "/")
 

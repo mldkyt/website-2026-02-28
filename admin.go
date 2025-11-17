@@ -403,6 +403,20 @@ func registerAdminHandlers() {
 			return
 		}
 
+		// Delete post
+		if query.Has("delete") {
+			id, err := strconv.Atoi(query.Get("delete"))
+			if err != nil {
+				http.Redirect(w, r, "/admin/anonymousmessages", http.StatusTemporaryRedirect)
+				return
+			}
+
+			db.Delete(&AnonymousMessage{}, "id = ?", id)
+
+			http.Redirect(w, r, "/admin/anonymousmessages", http.StatusTemporaryRedirect)
+			return
+		}
+
 		var anonymousMessages []AnonymousMessage
 		db.Find(&anonymousMessages)
 
