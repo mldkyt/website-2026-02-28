@@ -25,6 +25,7 @@ import prideModSrc from "./project/pridemod/pridemod.webp";
 import lunyasMiniModsSrc from "./project/lunyas-mini-mods/lunyas-mini-mods.webp";
 import sodiboostSrc from "./project/sodiboost/sodiboost.png";
 import catLikeBehaviourDetectedSrc from "./project/catlikebehaviourdetected/img1.png";
+import collabMarkovSrc from "./project/collabmarkov.png";
 
 import { getImage } from "astro:assets";
 
@@ -40,6 +41,7 @@ const cutieQuiz = await getImage({ src: cutieQuizSrc });
 const nekochat = await getImage({ src: nekochatSrc });
 const sodiboost = await getImage({ src: sodiboostSrc });
 const catLikeBehaviourDetected = await getImage({ src: catLikeBehaviourDetectedSrc });
+const collabMarkov = await getImage({ src: collabMarkovSrc });
 
 const legacyMsc = await getImage({ src: legacyMscSrc });
 const prideMod = await getImage({ src: prideModSrc });
@@ -79,6 +81,12 @@ const fediStreaks = await getImage({ src: fediStreaksSrc });
                         <div class={projectStyles.project} style={`background-image: url(${website.src});`}>
                             <h3>Website</h3>
                             <p>This very website! Add effects used on my site to yours!</p>
+                        </div>
+                    </a>
+                    <a href="/project/collabmarkov">
+                        <div class={projectStyles.project} style={`background-image: url(${collabMarkov.src});`}>
+                            <h3>Collaborative Markov Bot</h3>
+                            <p>A silly fediverse Markov bot</p>
                         </div>
                     </a>
                     <a href="/project/astolfoiscomingforyou">

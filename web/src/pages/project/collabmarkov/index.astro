@@ -1,0 +1,58 @@
+---
+import "@styles/global.module.css";
+import Header from "@components/header.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+import Scripts from "@components/scripts.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="Collaborative Markov Bot" description="The Collaborative Markov Bot is a fedi bot that takes posts from every follower it gets and generates a markovified post from that." />
+        <Scripts />
+        <Cursor />
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Collaborative Markov Bot</h1>
+                <p>The Collaborative Markov Bot is a fedi bot that takes posts from every follower it gets and generates a markovified post from that.</p>
+                <p>It is a bot that takes all posts from all followers and generates a markovified post from all of them. It has the following features:</p>
+
+                <ul>
+                    <li>
+                        <strong>Settings</strong> - DMing the bot <code>help</code> sends you a list of commands. You can enable inclusion of CWd posts and inclusion of unlisted posts into the corpus.
+                    </li>
+                    <li>
+                        <strong>Filtering</strong> - Filtering can be configured, excluding posts containing specific keywords or hashtags.
+                    </li>
+                    <li>
+                        <strong>Breaking or Removing Mentions</strong> - The bot can be configured to either break (e.g. add a space after the <code>@</code> in the note) or remove mentions.
+                    </li>
+                </ul>
+
+                <p>
+                    Collaborativ Markov Bot can be followed by anyone, in order for the bot to have the best quality!
+                </p>
+
+                <p>
+                    <i>Collaborative Markov Bot doesn&apos;t and will NEVER USE any post for any other use other than the bot&apos;s functionality.</i>
+                </p>
+
+                <p>
+                    <a href="https://gts.lunya.pet/@collabmarkov">
+                        <button>Follow the bot</button>
+                    </a>
+                </p>
+            </main>
+            <Footer />
+        </div>
+        <script is:inline defer src="/scripts/background.js"></script>
+    </body>
+</html>
