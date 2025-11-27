@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"mime"
 	"net/http"
 	"os"
@@ -112,11 +113,38 @@ func HandleWebsite(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, file_path)
 }
 
+func HandleCollabmarkovShitposts(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.New("shitposts").Delims("[[", "]]").ParseFiles("dist/project/collabmarkov/shitposts/index.html")
+	if err != nil {
+		println(err.Error())
+		http.Error(w, "Unable to load template, please try later", http.StatusInternalServerError)
+		return
+	}
+
+	db, err := openDB()
+	if err != nil {
+		println(err.Error())
+		http.Error(w, "Unable to connect to DB", http.StatusInternalServerError)
+		return
+	}
+
+	var bestShitposts []CollabmarkovShitposts
+	db.Order("score DESC").Limit(10).Find(&bestShitposts)
+
+	tmpl.ExecuteTemplate(w, "index.html", struct {
+		Shitposts []CollabmarkovShitposts
+	}{
+		Shitposts: bestShitposts,
+	})
+}
+
 func main() {
 	registerGuestbookHandlers()
 	registerAdminHandlers()
 	registerApiHandlers()
 	registerAnonymousMessages()
+
+	http.HandleFunc("/project/collabmarkov/shitposts", http.HandlerFunc(HandleCollabmarkovShitposts))
 
 	http.HandleFunc("/", http.HandlerFunc(HandleWebsite))
 
