@@ -12,11 +12,13 @@ import youtubeOrig from "./youtube.png";
 import forgejoOrig from "./forgejo.png";
 import twitchOrig from "./twitch.png";
 import sharkeyOrig from "./sharkey.png";
+import peertubeOrig from "./peertube.jpg";
 
 const youtube = await getImage({ src: youtubeOrig });
 const forgejo = await getImage({ src: forgejoOrig });
 const twitch = await getImage({ src: twitchOrig });
 const sharkey = await getImage({ src: sharkeyOrig });
+const peertube = await getImage({ src: peertubeOrig });
 ---
 
 <!doctype html>
@@ -56,7 +58,14 @@ const sharkey = await getImage({ src: sharkeyOrig });
                             <h3>The Fediverse (@lunya@sk.lunya.pet)</h3>
                         </div>
                     </a>
+                    <a href="https://pt.lunya.pet/c/lunyavids">
+                        <div class={socialStyles.social} style={`background-image: url(${peertube.src});`}>
+                            <h3>Federated videos (@lunyavids@pt.lunya.pet)</h3>
+                        </div>
+                    </a>
                 </div>
+
+                <p>Also check out my <a href="/discord">Discord server</a> and <a href="https://forums.lunya.pet" target="_blank">forums</a>.</p>
             </main>
             <Footer />
         </div>

@@ -53,7 +53,12 @@ func HandleWebsite(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if strings.HasSuffix(r.URL.Path, "/") && r.URL.Path != "/" {
+	if r.URL.Path == "/" {
+		HandleMainSite(w, r)
+		return
+	}
+
+	if strings.HasSuffix(r.URL.Path, "/") {
 		url_without_end, _ := strings.CutSuffix(r.URL.Path, "/")
 
 		if r.URL.RawQuery != "" {
@@ -135,6 +140,31 @@ func HandleCollabmarkovShitposts(w http.ResponseWriter, r *http.Request) {
 		Shitposts []CollabmarkovShitposts
 	}{
 		Shitposts: bestShitposts,
+	})
+}
+
+func HandleMainSite(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.New("index").Delims("[[", "]]").ParseFiles("dist/index.html")
+	if err != nil {
+		println(err.Error())
+		http.Error(w, "Unable to load template, please try later", http.StatusInternalServerError)
+		return
+	}
+
+	db, err := openDB()
+	if err != nil {
+		println(err.Error())
+		http.Error(w, "Unable to connect to DB", http.StatusInternalServerError)
+		return
+	}
+
+	var youTubeVideos []YouTubeVideos
+	db.Order("created_at DESC").Limit(10).Find(&youTubeVideos)
+
+	tmpl.ExecuteTemplate(w, "index.html", struct {
+		Videos []YouTubeVideos
+	}{
+		Videos: youTubeVideos,
 	})
 }
 
