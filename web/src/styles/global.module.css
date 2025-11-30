@@ -61,6 +61,7 @@ nav a {
 main {
     max-width: 800px;
     margin: 0 auto;
+    background-color: black;
 }
 
 h2, h3, h4, h5, h6 {
