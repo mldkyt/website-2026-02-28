@@ -41,12 +41,6 @@ func registerAdminHandlers() {
 			return
 		}
 
-		db, err := openDB()
-		if err != nil {
-			http.Error(w, fmt.Sprintf("Error: %s", err.Error()), http.StatusInternalServerError)
-			return
-		}
-
 		query := r.URL.Query()
 		if query.Has("approve") {
 			println("approve", query.Get("approve"))
@@ -289,12 +283,6 @@ func registerAdminHandlers() {
 		if !ok || user != os.Getenv("ADMIN_USER") || pass != os.Getenv("ADMIN_PASS") {
 			w.Header().Set("WWW-Authenticate", `Basic realm="restricted", charset="UTF-8"`)
 			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-			return
-		}
-
-		db, err := openDB()
-		if err != nil {
-			http.Error(w, "unable to open DB", http.StatusInternalServerError)
 			return
 		}
 

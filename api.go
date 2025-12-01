@@ -41,12 +41,6 @@ type YouTubeVideos struct {
 }
 
 func migrate() {
-	db, err := openDB()
-
-	if err != nil {
-		return
-	}
-
 	db.AutoMigrate(&ViewHistory{})
 	db.AutoMigrate(&ViewExpiry{})
 	db.AutoMigrate(&CollabmarkovShitposts{})
@@ -68,13 +62,6 @@ func registerApiHandlers() {
 		h := sha256.New()
 		h.Write([]byte(ip))
 		ip = fmt.Sprintf("%x", h.Sum(nil))
-
-		db, err := openDB()
-
-		if err != nil {
-			http.Error(w, fmt.Sprint("Unable to rw db: ", err), http.StatusInternalServerError)
-			return
-		}
 
 		if r.Method != "POST" {
 			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)

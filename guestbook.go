@@ -32,15 +32,8 @@ type GuestbookBans struct {
 }
 
 func registerGuestbookHandlers() {
-	{
-		db, err := openDB()
-		if err != nil {
-			panic(err)
-		}
-
-		db.AutoMigrate(&GuestbookItem{})
-		db.AutoMigrate(&GuestbookBans{})
-	}
+	db.AutoMigrate(&GuestbookItem{})
+	db.AutoMigrate(&GuestbookBans{})
 
 	guestbookTemplate := template.Must(template.New("guestbook").Delims("[[", "]]").ParseFiles("dist/guestbook/index.html"))
 
@@ -51,12 +44,6 @@ func registerGuestbookHandlers() {
 		}
 		if ip == "" {
 			ip = strings.TrimSpace(r.RemoteAddr)
-		}
-
-		db, err := openDB()
-		if err != nil {
-			http.Error(w, "Unable to open DB connection", http.StatusInternalServerError)
-			return
 		}
 
 		postingBan := false

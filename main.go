@@ -15,6 +15,8 @@ import (
 	"gorm.io/gorm"
 )
 
+var db *gorm.DB
+
 func openDB() (db *gorm.DB, err error) {
 	dbMode := os.Getenv("DB_BACKEND")
 
@@ -126,13 +128,6 @@ func HandleCollabmarkovShitposts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db, err := openDB()
-	if err != nil {
-		println(err.Error())
-		http.Error(w, "Unable to connect to DB", http.StatusInternalServerError)
-		return
-	}
-
 	var bestShitposts []CollabmarkovShitposts
 	db.Order("score DESC").Limit(10).Find(&bestShitposts)
 
@@ -151,13 +146,6 @@ func HandleMainSite(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db, err := openDB()
-	if err != nil {
-		println(err.Error())
-		http.Error(w, "Unable to connect to DB", http.StatusInternalServerError)
-		return
-	}
-
 	var youTubeVideos []YouTubeVideos
 	db.Order("created_at DESC").Limit(10).Find(&youTubeVideos)
 
@@ -169,6 +157,12 @@ func HandleMainSite(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	db2, err := openDB()
+	if err != nil {
+		panic(err)
+	}
+	db = db2
+
 	registerGuestbookHandlers()
 	registerAdminHandlers()
 	registerApiHandlers()
@@ -179,7 +173,7 @@ func main() {
 	http.HandleFunc("/", http.HandlerFunc(HandleWebsite))
 
 	println("Starting website")
-	err := http.ListenAndServe(":8080", nil)
+	err = http.ListenAndServe(":8080", nil)
 	if err != nil {
 		panic(err)
 	}

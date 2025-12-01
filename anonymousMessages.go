@@ -26,15 +26,8 @@ type AnonymousMessageBan struct {
 }
 
 func registerAnonymousMessages() {
-	{
-		db, err := openDB()
-		if err != nil {
-			panic(err)
-		}
-
-		db.AutoMigrate(&AnonymousMessage{})
-		db.AutoMigrate(&AnonymousMessageBan{})
-	}
+	db.AutoMigrate(&AnonymousMessage{})
+	db.AutoMigrate(&AnonymousMessageBan{})
 
 	contactTemplate := template.Must(template.New("contact").Delims("[[", "]]").ParseFiles("dist/contact/index.html"))
 
@@ -164,9 +157,6 @@ func registerAnonymousMessages() {
 				})
 				return
 			}
-
-			// Check anonymous message
-			db, err := openDB()
 
 			var msg AnonymousMessage
 			result := db.First(&msg, "ip = ?", ip)
