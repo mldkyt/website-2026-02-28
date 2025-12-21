@@ -24,15 +24,6 @@ type ViewExpiry struct {
 	Expiry time.Time
 }
 
-type CollabmarkovShitposts struct {
-	ID        string `gorm:"primaryKey" json:"id"`
-	Text      string `json:"text"`
-	Link      string `json:"link"`
-	Score     int    `json:"score"`
-	Boosts    int    `json:"boosts"`
-	Favorites int    `json:"favorites"`
-}
-
 type YouTubeVideos struct {
 	ID        string    `gorm:"primaryKey" json:"id"`
 	CreatedAt time.Time `json:"createdAt"`
@@ -43,7 +34,6 @@ type YouTubeVideos struct {
 func migrate() {
 	db.AutoMigrate(&ViewHistory{})
 	db.AutoMigrate(&ViewExpiry{})
-	db.AutoMigrate(&CollabmarkovShitposts{})
 	db.AutoMigrate(&YouTubeVideos{})
 }
 
@@ -112,50 +102,6 @@ func registerApiHandlers() {
 		w.Header().Add("Content-Type", "application/json")
 		w.WriteHeader(200)
 		w.Write(bytes)
-	})
-
-	http.HandleFunc("/api/collabmarkovstats", func(w http.ResponseWriter, r *http.Request) {
-		env_token := os.Getenv("COLLABMARKOV_TOKEN")
-		if len(strings.TrimSpace(env_token)) == 0 {
-			http.Error(w, "Config is missing", http.StatusInternalServerError)
-			return
-		}
-
-		token := strings.TrimSpace(r.Header.Get("Authorization"))
-		if !strings.HasPrefix(token, "Bearer ") {
-			http.Error(w, "Unauthorized: Token not in valid format", http.StatusUnauthorized)
-			return
-		}
-
-		token = strings.Split(token, " ")[1]
-		if token != env_token {
-			http.Error(w, "Unauthorized: Token invalid", http.StatusUnauthorized)
-			return
-		}
-
-		var items []CollabmarkovShitposts
-		err := json.NewDecoder(r.Body).Decode(&items)
-		if err != nil {
-			http.Error(w, "Invalid body", http.StatusInternalServerError)
-			return
-		}
-
-		db, err := openDB()
-		if err != nil {
-			http.Error(w, "Unable to open DB connection", http.StatusInternalServerError)
-			return
-		}
-
-		db.Delete(&CollabmarkovShitposts{}, "1 = 1")
-
-		for i := range len(items) {
-			db.Clauses(clause.OnConflict{
-				UpdateAll: true,
-			}).Create(&items[i])
-		}
-
-		w.WriteHeader(http.StatusNoContent)
-		w.Write(make([]byte, 0))
 	})
 
 	http.HandleFunc("/api/youtubevideos", func(w http.ResponseWriter, r *http.Request) {

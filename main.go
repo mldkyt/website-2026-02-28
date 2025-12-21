@@ -120,24 +120,6 @@ func HandleWebsite(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, file_path)
 }
 
-func HandleCollabmarkovShitposts(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.New("shitposts").Delims("[[", "]]").ParseFiles("dist/project/collabmarkov/shitposts/index.html")
-	if err != nil {
-		println(err.Error())
-		http.Error(w, "Unable to load template, please try later", http.StatusInternalServerError)
-		return
-	}
-
-	var bestShitposts []CollabmarkovShitposts
-	db.Order("score DESC").Limit(10).Find(&bestShitposts)
-
-	tmpl.ExecuteTemplate(w, "index.html", struct {
-		Shitposts []CollabmarkovShitposts
-	}{
-		Shitposts: bestShitposts,
-	})
-}
-
 func HandleMainSite(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.New("index").Delims("[[", "]]").ParseFiles("dist/index.html")
 	if err != nil {
@@ -167,8 +149,6 @@ func main() {
 	registerAdminHandlers()
 	registerApiHandlers()
 	registerAnonymousMessages()
-
-	http.HandleFunc("/project/collabmarkov/shitposts", http.HandlerFunc(HandleCollabmarkovShitposts))
 
 	http.HandleFunc("/", http.HandlerFunc(HandleWebsite))
 
