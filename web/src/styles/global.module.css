@@ -61,7 +61,7 @@ nav a {
 main {
     max-width: 800px;
     margin: 0 auto;
-    background-color: black;
+    background: black;
 }
 
 h2, h3, h4, h5, h6 {
@@ -113,7 +113,7 @@ footer p {
 
 /* Button styles */
 button {
-    background-color: #c0c0c0;
+    background: #c0c0c0;
     color: black;
     padding: 4px 20px;
     border: 2px solid gray;

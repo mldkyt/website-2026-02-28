@@ -1,6 +1,6 @@
 .project {
     margin-bottom: 20px;
-    background-color: #333;
+    background: #333;
     color: #fff;
     height: 100px;
     background-position: center;
@@ -16,7 +16,7 @@
     height: 30px;
     font-size: medium;
     text-shadow: 2px 2px 2px #000;
-    background-color: #333333aa;
+    background: #333333aa;
     padding-left: 10px;
 }
 
@@ -26,12 +26,12 @@
     padding-left: 20px;
     color: #ffffff;
     text-shadow: 2px 2px 2px #000;
-    background-color: #333333aa;
+    background: #333333aa;
     height: 70px;
 }
 
 .error {
-    background-color: rgb(94, 3, 3);
+    background: rgb(94, 3, 3);
     margin-top: 20px;
     padding: 10px;
     border-radius: 10px;

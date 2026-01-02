@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    background-color: #333;
+    background: #333;
     color: #fff;
     height: 100px;
     background-position: center;
@@ -20,14 +20,14 @@
     font-size: large;
     text-align: center;
     text-shadow: 1px 1px 1px #000;
-    background-color: #333333aa;
+    background: #333333aa;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .error {
-    background-color: rgb(94, 3, 3);
+    background: rgb(94, 3, 3);
     margin-top: 20px;
     padding: 10px;
     border-radius: 10px;
