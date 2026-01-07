@@ -39,14 +39,41 @@ import Cursor from "@components/cursor.astro";
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
             <Header />
             <main>
-                <h1>Contact Lunya :3</h1>
-
-                <h2>Send an Anonymous Message</h2>
                 {"[[if .IsError]]"}
                 <div class="error">
                     <span>Error: [[.Error]]</span>
                 </div>
-                {"[[end]]"}
+
+                <a href="/contact">
+                    <button>Reload</button>
+                </a>
+                {"[[else]]"}
+                {"[[if .ShowCaptcha]]"}
+                <h1>Please verify captcha</h1>
+
+                <form method="post" action="/contact">
+                    <input type="hidden" name="validateaccess" value="true" />
+
+                    <!-- mCaptcha -->
+                    <label data-mcaptcha_url="https://captcha.lunya.pet/widget/?sitekey=vRm5tB2mL5PbzfsdJBYgNeCUYiTYDe9a" for="mcaptcha__token" id="mcaptcha__token-label">
+                        mCaptcha authorization token.
+
+                        <a href="https://mcaptcha.org/docs/user-manual/how-to-mcaptcha-without-js/">Instructions</a>.
+
+                        <input type="text" name="mcaptcha__token" id="mcaptcha__token" />
+                    </label>
+
+                    <div id="mcaptcha__widget-container"></div>
+
+                    <script src="https://unpkg.com/@mcaptcha/vanilla-glue@0.1.0-rc2/dist/index.js"></script>
+
+                    <br />
+                    <button type="submit">Verify</button>
+                </form>
+                {"[[else]]"}
+                <h1>Contact Lunya :3</h1>
+
+                <h2>Send an Anonymous Message</h2>
                 {"[[if .SentAnonymousMessage]]"}
                 <div class="success">
                     <span>Your anonymous message was sent :3</span>
@@ -100,6 +127,10 @@ import Cursor from "@components/cursor.astro";
                 </li>
 
                 <br />
+                {"[[end]]"}
+                <!-- ^ End for verifying/show -->
+                {"[[end]]"}
+                <!-- ^ End for show error/content -->
             </main>
             <Footer />
         </div>
