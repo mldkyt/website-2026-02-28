@@ -25,12 +25,37 @@ import Cursor from "@components/cursor.astro";
                 <p>Here you can join the Discord server that is owned by Lunya.</p>
                 <p>Here you can get help with any of her mods, chat with the community or ask her questions.</p>
                 <p>You will get video announcements, new project announcements and ability to get involved in developing of some projects.</p>
+                {"[[if .Captcha]]"}
+                <p>
+                    <strong>To see the invite link, please verify the captcha:</strong>
+                </p>
+
+                <form method="post" action="/discord">
+                    <input type="hidden" name="validateaccess" value="true" />
+
+                    <!-- mCaptcha -->
+                    <label data-mcaptcha_url="https://captcha.lunya.pet/widget/?sitekey=vRm5tB2mL5PbzfsdJBYgNeCUYiTYDe9a" for="mcaptcha__token" id="mcaptcha__token-label">
+                        mCaptcha authorization token.
+
+                        <a href="https://mcaptcha.org/docs/user-manual/how-to-mcaptcha-without-js/">Instructions</a>.
+
+                        <input type="text" name="mcaptcha__token" id="mcaptcha__token" />
+                    </label>
+
+                    <div id="mcaptcha__widget-container"></div>
+
+                    <script src="https://unpkg.com/@mcaptcha/vanilla-glue@0.1.0-rc2/dist/index.js"></script>
+
+                    <br />
+                    <button type="submit">Verify</button>
+                </form>
+                {"[[else]]"}
                 <p>
                     <a href="https://discord.gg/uTWjgy2E4v">
                         <button>Join</button>
                     </a>
                 </p>
-
+                {"[[end]]"}
                 <h2>Updates directly from Lunya</h2>
                 <p>This server is where you'll find the latest Lunya news. It's where we post new projects, YouTube videos, and when Lunya goes live.</p>
 

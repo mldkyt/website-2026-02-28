@@ -13,12 +13,16 @@ import forgejoOrig from "./forgejo.png";
 import twitchOrig from "./twitch.png";
 import sharkeyOrig from "./sharkey.png";
 import peertubeOrig from "./peertube.jpg";
+import forumsOrig from "./forums.png";
+import discordOrig from "./discord.png";
 
 const youtube = await getImage({ src: youtubeOrig });
 const forgejo = await getImage({ src: forgejoOrig });
 const twitch = await getImage({ src: twitchOrig });
 const sharkey = await getImage({ src: sharkeyOrig });
 const peertube = await getImage({ src: peertubeOrig });
+const forums = await getImage({ src: forumsOrig });
+const discord = await getImage({ src: discordOrig });
 ---
 
 <!doctype html>
@@ -36,7 +40,21 @@ const peertube = await getImage({ src: peertubeOrig });
             <Header />
             <main>
                 <h1>Lunya's socials</h1>
-                <p>This is a list of Lunya's social accounts.</p>
+                <h2>The Community</h2>
+                <p>You can join Lunya's community using this Discord link:</p>
+                <div class={socialStyles.socialContainer}>
+                    <a href="/discord">
+                        <div class={socialStyles.social} style={`background-image: url(${discord.src});`}>
+                            <h3>Discord Server</h3>
+                        </div>
+                    </a>
+                    <a href="https://forums.lunya.pet">
+                        <div class={socialStyles.social} style={`background-image: url(${forums.src});`}>
+                            <h3>Forums</h3>
+                        </div>
+                    </a>
+                </div>
+                <h2>Social Networks</h2>
                 <div class={socialStyles.socialContainer}>
                     <a href="https://www.youtube.com/channel/UC7JMha1kjOS7gsJXwNtosNw">
                         <div class={socialStyles.social} style={`background-image: url(${youtube.src});`}>
@@ -66,9 +84,10 @@ const peertube = await getImage({ src: peertubeOrig });
                 </div>
 
                 <p>Also check out my <a href="/discord">Discord server</a> and <a href="https://forums.lunya.pet" target="_blank">forums</a>.</p>
+
+                <Footer />
             </main>
-            <Footer />
+            <script is:inline defer src="/scripts/background.js"></script>
         </div>
-        <script is:inline defer src="/scripts/background.js"></script>
     </body>
 </html>

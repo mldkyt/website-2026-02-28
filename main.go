@@ -138,6 +138,76 @@ func HandleMainSite(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func HandleDiscord(w http.ResponseWriter, r *http.Request) {
+	type Response struct {
+		Captcha bool
+	}
+
+	tmpl, err := template.New("index").Delims("[[", "]]").ParseFiles("dist/discord/index.html")
+	if err != nil {
+		println(err.Error())
+		http.Error(w, "Unable to load template, please try later", http.StatusInternalServerError)
+		return
+	}
+
+	cookie, err := r.Cookie("access")
+	if err != nil {
+		cookie = &http.Cookie{
+			Name:     "access",
+			Value:    "",
+			Secure:   true,
+			SameSite: http.SameSiteLaxMode,
+			HttpOnly: true,
+			Path:     "/",
+		}
+	}
+
+	if r.Method == "POST" {
+		err := r.ParseForm()
+		if err != nil {
+			tmpl.ExecuteTemplate(w, "index.html", Response{
+				Captcha: true,
+			})
+			return
+		}
+
+		if r.Form.Has("validateaccess") && r.Form.Get("validateaccess") == "true" {
+			code, err := validateCookie(r)
+			if err != nil {
+				tmpl.ExecuteTemplate(w, "index.html", Response{
+					Captcha: true,
+				})
+				return
+			}
+
+			http.SetCookie(w, &http.Cookie{
+				Name:     "access",
+				Value:    code,
+				Secure:   true,
+				HttpOnly: true,
+				MaxAge:   1800,
+				Path:     "/",
+				SameSite: http.SameSiteLaxMode,
+			})
+
+			http.Redirect(w, r, "/discord", http.StatusFound)
+			return
+		}
+	}
+
+	if !checkCookie(cookie) {
+		tmpl.ExecuteTemplate(w, "index.html", Response{
+			Captcha: true,
+		})
+
+		return
+	}
+
+	tmpl.ExecuteTemplate(w, "index.html", Response{
+		Captcha: false,
+	})
+}
+
 func main() {
 	db2, err := openDB()
 	if err != nil {
@@ -151,6 +221,7 @@ func main() {
 	registerAnonymousMessages()
 
 	http.HandleFunc("/", http.HandlerFunc(HandleWebsite))
+	http.HandleFunc("/discord", http.HandlerFunc(HandleDiscord))
 
 	println("Starting website")
 	err = http.ListenAndServe(":8080", nil)
