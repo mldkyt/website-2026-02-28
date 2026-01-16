@@ -15,6 +15,7 @@ import sharkeyOrig from "./sharkey.png";
 import peertubeOrig from "./peertube.jpg";
 import forumsOrig from "./forums.png";
 import discordOrig from "./discord.png";
+import nexusmodsOrig from "./nexusmods.jpg";
 
 const youtube = await getImage({ src: youtubeOrig });
 const forgejo = await getImage({ src: forgejoOrig });
@@ -23,6 +24,7 @@ const sharkey = await getImage({ src: sharkeyOrig });
 const peertube = await getImage({ src: peertubeOrig });
 const forums = await getImage({ src: forumsOrig });
 const discord = await getImage({ src: discordOrig });
+const nexusmods = await getImage({ src: nexusmodsOrig });
 ---
 
 <!doctype html>
@@ -56,21 +58,6 @@ const discord = await getImage({ src: discordOrig });
                 </div>
                 <h2>Social Networks</h2>
                 <div class={socialStyles.socialContainer}>
-                    <a href="https://www.youtube.com/channel/UC7JMha1kjOS7gsJXwNtosNw">
-                        <div class={socialStyles.social} style={`background-image: url(${youtube.src});`}>
-                            <h3>YouTube (@LunyaUwU)</h3>
-                        </div>
-                    </a>
-                    <a href="https://git.lunya.pet/Lunya">
-                        <div class={socialStyles.social} style={`background-image: url(${forgejo.src});`}>
-                            <h3>Forgejo (Lunya on git.lunya.pet)</h3>
-                        </div>
-                    </a>
-                    <a href="https://www.twitch.tv/LunyaUwU">
-                        <div class={socialStyles.social} style={`background-image: url(${twitch.src});`}>
-                            <h3>Twitch (@LunyaUwU)</h3>
-                        </div>
-                    </a>
                     <a href="https://sk.lunya.pet/@lunya">
                         <div class={socialStyles.social} style={`background-image: url(${sharkey.src});`}>
                             <h3>The Fediverse (@lunya@sk.lunya.pet)</h3>
@@ -81,9 +68,42 @@ const discord = await getImage({ src: discordOrig });
                             <h3>Federated videos (@lunyavids@pt.lunya.pet)</h3>
                         </div>
                     </a>
+                    <a href="https://www.youtube.com/channel/UC7JMha1kjOS7gsJXwNtosNw">
+                        <div class={socialStyles.social} style={`background-image: url(${youtube.src});`}>
+                            <h3>YouTube (@LunyaUwU)</h3>
+                        </div>
+                    </a>
+                    <a href="https://git.lunya.pet/Lunya">
+                        <div class={socialStyles.social} style={`background-image: url(${forgejo.src});`}>
+                            <h3>Forgejo (Lunya on git.lunya.pet)</h3>
+                        </div>
+                    </a>
+                    <a href="https://www.twitch.tv/lunyacatgirl">
+                        <div class={socialStyles.social} style={`background-image: url(${twitch.src});`}>
+                            <h3>Twitch (@lunyacatgirl)</h3>
+                        </div>
+                    </a>
+                    <a href="https://www.nexusmods.com/profile/gothcatgrl">
+                        <div class={socialStyles.social} style={`background-image: url(${nexusmods.src});`}>
+                            <h3>NexusMods (@gothcatgrl)</h3>
+                        </div>
+                    </a>
                 </div>
 
                 <p>Also check out my <a href="/discord">Discord server</a> and <a href="https://forums.lunya.pet" target="_blank">forums</a>.</p>
+
+                <h2>Other accounts</h2>
+
+                <p>A brief list of accounts:</p>
+
+                <ul>
+                    <li><a href="https://github.com/c4tgrl">GitHub (Unused)</a></li>
+                    <li><a href="https://gitlab.com/catgrl">GitLab.com (catgrl)</a></li>
+                    <li><a href="https://git.gay/Lunya">git.gay (Lunya)</a></li>
+                    <li><a href="https://codeberg.org/c4tgirl">Codeberg (CatgirlLunya)</a></li>
+                    <li><a href="https://namemc.com/profile/gothcatgrl.1">NameMC (gothcatgrl)</a></li>
+                    <li><a href="https://e-z.bio/lunya">E-Z bio (lunya)</a></li>
+                </ul>
 
                 <Footer />
             </main>
