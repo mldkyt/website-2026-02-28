@@ -19,6 +19,7 @@ import cutieQuizSrc from "./project/cutiequiz/1.png";
 import fediMeowSrc from "./project/fedi/meow/fedimeow.png";
 import fediSummarizerSrc from "./project/fedi/summarizer/fedisummarizer.png";
 import fediStreaksSrc from "./project/fedi/streaks/fedistreaks.png";
+import fediKeysmashSrc from "./project/fedi/keysmash/keysmash.jpg";
 import nekochatSrc from "./project/neko/chat.png";
 import legacyMscSrc from "./project/legacymsc/legacymsc.webp";
 import prideModSrc from "./project/pridemod/pridemod.webp";
@@ -50,6 +51,7 @@ const lunyasMiniMods = await getImage({ src: lunyasMiniModsSrc });
 const fediMeow = await getImage({ src: fediMeowSrc });
 const fediSummarizer = await getImage({ src: fediSummarizerSrc });
 const fediStreaks = await getImage({ src: fediStreaksSrc });
+const fediKeysmash = await getImage({ src: fediKeysmashSrc });
 ---
 
 <!doctype html>
@@ -87,6 +89,12 @@ const fediStreaks = await getImage({ src: fediStreaksSrc });
                         <div class={projectStyles.project} style={`background-image: url(${collabMarkov.src});`}>
                             <h3>Collaborative Markov Bot</h3>
                             <p>A silly fediverse Markov bot</p>
+                        </div>
+                    </a>
+                    <a href="/project/fedi/keysmash">
+                        <div class={projectStyles.project} style={`background-image: url(${fediKeysmash.src});`}>
+                            <h3>Fedi Keysmash Bot</h3>
+                            <p>Fedi keysmash detector and quoter</p>
                         </div>
                     </a>
                     <a href="/project/astolfoiscomingforyou">
