@@ -24,17 +24,17 @@ type ViewExpiry struct {
 	Expiry time.Time
 }
 
-type YouTubeVideos struct {
-	ID        string    `gorm:"primaryKey" json:"id"`
-	CreatedAt time.Time `json:"createdAt"`
-	Title     string    `json:"title"`
-	Link      string    `json:"link"`
+type YouTubeVideos2 struct {
+	ID      int    `gorm:"primaryKey" json:"-"`
+	VideoID string `json:"id"`
+	Title   string `json:"title"`
+	Link    string `json:"link"`
 }
 
 func migrate() {
 	db.AutoMigrate(&ViewHistory{})
 	db.AutoMigrate(&ViewExpiry{})
-	db.AutoMigrate(&YouTubeVideos{})
+	db.AutoMigrate(&YouTubeVideos2{})
 }
 
 func registerApiHandlers() {
@@ -123,7 +123,7 @@ func registerApiHandlers() {
 			return
 		}
 
-		var items []YouTubeVideos
+		var items []YouTubeVideos2
 		err := json.NewDecoder(r.Body).Decode(&items)
 		if err != nil {
 			http.Error(w, "Invalid body", http.StatusInternalServerError)
@@ -136,12 +136,12 @@ func registerApiHandlers() {
 			return
 		}
 
-		db.Delete(&YouTubeVideos{}, "1 = 1")
-
 		for i := range len(items) {
-			db.Clauses(clause.OnConflict{
-				UpdateAll: true,
-			}).Create(&items[i])
+			var result YouTubeVideos2
+			dbResult := db.Where(&YouTubeVideos2{VideoID: items[i].VideoID}).First(&result)
+			if errors.Is(dbResult.Error, gorm.ErrRecordNotFound) {
+				db.Create(&items[i])
+			}
 		}
 
 		w.WriteHeader(http.StatusNoContent)

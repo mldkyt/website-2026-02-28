@@ -128,11 +128,11 @@ func HandleMainSite(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var youTubeVideos []YouTubeVideos
-	db.Order("created_at DESC").Limit(10).Find(&youTubeVideos)
+	var youTubeVideos []YouTubeVideos2
+	db.Order("id DESC").Limit(5).Find(&youTubeVideos)
 
 	tmpl.ExecuteTemplate(w, "index.html", struct {
-		Videos []YouTubeVideos
+		Videos []YouTubeVideos2
 	}{
 		Videos: youTubeVideos,
 	})
@@ -208,6 +208,24 @@ func HandleDiscord(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func HandleVideos(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.New("index").Delims("[[", "]]").ParseFiles("dist/videos/index.html")
+	if err != nil {
+		println(err.Error())
+		http.Error(w, "Unable to load template, please try later", http.StatusInternalServerError)
+		return
+	}
+
+	var youTubeVideos []YouTubeVideos2
+	db.Order("id DESC").Find(&youTubeVideos)
+
+	tmpl.ExecuteTemplate(w, "index.html", struct {
+		Videos []YouTubeVideos2
+	}{
+		Videos: youTubeVideos,
+	})
+}
+
 func main() {
 	db2, err := openDB()
 	if err != nil {
@@ -222,6 +240,7 @@ func main() {
 
 	http.HandleFunc("/", http.HandlerFunc(HandleWebsite))
 	http.HandleFunc("/discord", http.HandlerFunc(HandleDiscord))
+	http.HandleFunc("/videos", http.HandlerFunc(HandleVideos))
 
 	println("Starting website")
 	err = http.ListenAndServe(":8080", nil)
