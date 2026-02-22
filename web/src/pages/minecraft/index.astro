@@ -1,0 +1,136 @@
+---
+import Header from "@components/header.astro";
+import "@styles/global.module.css";
+import Scripts from "@components/scripts.astro";
+import Footer from "@components/footer.astro";
+import Meta from "@components/meta.astro";
+import Cursor from "@components/cursor.astro";
+
+import spawnSrc from "./spawn.jpg";
+import { getImage } from "astro:assets";
+
+const spawn = await getImage({ src: spawnSrc });
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Meta name="Lunya" description="Lunya is a cute girl programmer making projects, YouTube videos and sometimes streams." />
+        <Scripts />
+        <Cursor />
+    </head>
+
+    <body>
+        <canvas id="background"></canvas>
+        <!-- God damnit, I'm forced to use inline styles because Astro is stupid -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <Header />
+            <main>
+                <h1>Lunya&apos;s Minecraft Server</h1>
+
+                <p>This is the official Lunya&apos;s community server. It is mostly an SMP currently, but in the future we plan to host events :3</p>
+
+                <details>
+                    <summary>Rules</summary>
+
+                    <p>The rules are very simple. <strong>Rules:</strong></p>
+                    <ul>
+                        <li>have common sense</li>
+                        <li>do not grief</li>
+                        <li>do not cheat</li>
+                    </ul>
+                </details>
+
+                <details>
+                    <summary>Image Gallery</summary>
+
+                    <img
+                        src={spawn.src}
+                        alt="Screenshot of a Minecraft building kind of hanging off a cliff. The entire floor is made of glass surrounded by oak logs. There's a main part, 5x5 with just fences around it. To it is another part connected which is slightly smaller and has a roof."
+                    />
+                </details>
+
+                <details>
+                    <summary>Server Commands & Info</summary>
+
+                    <h2>Changing your skin</h2>
+                    <p>
+                        Since the MC server allows offline accounts to log in, skins don't work the same way they used to. To set a skin, please use the following command: <code>/skin set &lt;username&gt;</code>. Replace the username with
+                        the username of a player who has the desired skin.
+                    </p>
+
+                    <h2>Setting homes</h2>
+                    <p>You can set up to 5 homes. Use <code>/sethome</code> to set your main house, and <code>/sethome &lt;name&gt;</code> to set a named home.</p>
+                    <p>You can later use <code>/home</code> and <code>/home &lt;name&gt;</code> to teleport to a home</p>
+
+                    <h2>Warps</h2>
+                    <p>List warps using <code>/warps</code>. You can use a warp by typing <code>/warp &lt;name&gt;</code>.</p>
+                    <p>To set a warp, please contact an admin. Unlike homes, warps are public, and require an admin to set them.</p>
+
+                    <h2>Locking your stuff</h2>
+                    <p>If you want to lock your stuff to prevent other players from e.g. stealing your stuff, you can use the classic <code>/lock</code> command. Once you run it, click on the item you want to lock to lock it.</p>
+                    <p>Additional commands exist:</p>
+                    <ul>
+                        <li><code>/cpublic</code> - Publicly lock something (anyone can access it)</li>
+                        <li><code>/cdonation</code> - Create a donation chest</li>
+                        <li><code>/csupply</code> - Create a supply chest</li>
+                        <li><code>/cpassword</code> - Create a password-protected lock</li>
+                        <li><code>/cinfo</code> - Get information about a locked item</li>
+                        <li><code>/cmodify</code> - Modify a locked item</li>
+                        <li><code>/unlock</code> - Remove a lock from your item</li>
+                    </ul>
+
+                    <h2>Other useful commands</h2>
+                    <ul>
+                        <li><strong>Admin Contact</strong> - the <code>/contact</code> command is there to contact admins.</li>
+                        <li><strong>Discord Server</strong> - a <code>/discord</code> command is there to get an invite.</li>
+                        <li><strong>Meow</strong> - the <code>/meow</code> command will meow</li>
+                    </ul>
+
+                    <h2>Getting your builds listed as images on this website</h2>
+                    <p>
+                        If you want to show the world your Minecraft build, contact the owner. There's <a href="/contact">a contact page</a> on this website you can use to reach out to her. She will take pictures of your build and list them in
+                        the images section of this website.
+                    </p>
+                </details>
+
+                <br />
+
+                <h2>How do I join?</h2>
+
+                {"[[if .Captcha]]"}
+                <p>Please verify this captcha to get the server IP and version(s). This is to prevent abuse</p>
+
+                <form method="post" action="/minecraft">
+                    <input type="hidden" name="validateaccess" value="true" />
+
+                    <!-- mCaptcha -->
+                    <label data-mcaptcha_url="https://captcha.lunya.pet/widget/?sitekey=vRm5tB2mL5PbzfsdJBYgNeCUYiTYDe9a" for="mcaptcha__token" id="mcaptcha__token-label">
+                        mCaptcha authorization token.
+
+                        <a href="https://mcaptcha.org/docs/user-manual/how-to-mcaptcha-without-js/">Instructions</a>.
+
+                        <input type="text" name="mcaptcha__token" id="mcaptcha__token" />
+                    </label>
+
+                    <div id="mcaptcha__widget-container"></div>
+
+                    <script src="https://unpkg.com/@mcaptcha/vanilla-glue@0.1.0-rc2/dist/index.js"></script>
+
+                    <br />
+                    <button type="submit">Verify</button>
+                </form>
+                {"[[else]]"}
+                <p>The server IP is <code>lunya.pet</code>, any version between 1.7.2 and 1.21.11 will work. <strong>Minecraft account is not required!</strong></p>
+                {"[[end]]"}
+
+                <p>The server is protected with a register+login system. In the case you forget your password, please reach out to the admins to get it reset.</p>
+
+                <p>Have fun :3</p>
+
+                <Footer />
+            </main>
+            <script is:inline src="/scripts/background.js"></script>
+        </div>
+    </body>
+</html>

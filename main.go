@@ -138,41 +138,33 @@ func HandleMainSite(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-func HandleDiscord(w http.ResponseWriter, r *http.Request) {
+func HandleGenericWithCaptchaPage(page string) func(http.ResponseWriter, *http.Request) {
 	type Response struct {
 		Captcha bool
 	}
 
-	tmpl, err := template.New("index").Delims("[[", "]]").ParseFiles("dist/discord/index.html")
-	if err != nil {
-		println(err.Error())
-		http.Error(w, "Unable to load template, please try later", http.StatusInternalServerError)
-		return
-	}
-
-	cookie, err := r.Cookie("access")
-	if err != nil {
-		cookie = &http.Cookie{
-			Name:     "access",
-			Value:    "",
-			Secure:   true,
-			SameSite: http.SameSiteLaxMode,
-			HttpOnly: true,
-			Path:     "/",
-		}
-	}
-
-	if r.Method == "POST" {
-		err := r.ParseForm()
+	return func(w http.ResponseWriter, r *http.Request) {
+		tmpl, err := template.New("index").Delims("[[", "]]").ParseFiles(fmt.Sprintf("dist%s/index.html", page))
 		if err != nil {
-			tmpl.ExecuteTemplate(w, "index.html", Response{
-				Captcha: true,
-			})
+			println(err.Error())
+			http.Error(w, "Unable to load template, please try later", http.StatusInternalServerError)
 			return
 		}
 
-		if r.Form.Has("validateaccess") && r.Form.Get("validateaccess") == "true" {
-			code, err := validateCookie(r)
+		cookie, err := r.Cookie("access")
+		if err != nil {
+			cookie = &http.Cookie{
+				Name:     "access",
+				Value:    "",
+				Secure:   true,
+				SameSite: http.SameSiteLaxMode,
+				HttpOnly: true,
+				Path:     "/",
+			}
+		}
+
+		if r.Method == "POST" {
+			err := r.ParseForm()
 			if err != nil {
 				tmpl.ExecuteTemplate(w, "index.html", Response{
 					Captcha: true,
@@ -180,32 +172,45 @@ func HandleDiscord(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 
-			http.SetCookie(w, &http.Cookie{
-				Name:     "access",
-				Value:    code,
-				Secure:   true,
-				HttpOnly: true,
-				MaxAge:   1800,
-				Path:     "/",
-				SameSite: http.SameSiteLaxMode,
+			if r.Form.Has("validateaccess") && r.Form.Get("validateaccess") == "true" {
+				code, err := validateCookie(r)
+				if err != nil {
+					tmpl.ExecuteTemplate(w, "index.html", Response{
+						Captcha: true,
+					})
+					return
+				}
+
+				http.SetCookie(w, &http.Cookie{
+					Name:     "access",
+					Value:    code,
+					Secure:   true,
+					HttpOnly: true,
+					MaxAge:   1800,
+					Path:     "/",
+					SameSite: http.SameSiteLaxMode,
+				})
+
+				http.Redirect(w, r, page, http.StatusFound)
+				return
+			}
+		}
+
+		if !checkCookie(cookie) {
+			tmpl.ExecuteTemplate(w, "index.html", Response{
+				Captcha: true,
 			})
 
-			http.Redirect(w, r, "/discord", http.StatusFound)
 			return
 		}
-	}
 
-	if !checkCookie(cookie) {
 		tmpl.ExecuteTemplate(w, "index.html", Response{
-			Captcha: true,
+			Captcha: false,
 		})
-
-		return
 	}
+}
 
-	tmpl.ExecuteTemplate(w, "index.html", Response{
-		Captcha: false,
-	})
+func HandleDiscord(w http.ResponseWriter, r *http.Request) {
 }
 
 func HandleVideos(w http.ResponseWriter, r *http.Request) {
@@ -239,8 +244,9 @@ func main() {
 	registerAnonymousMessages()
 
 	http.HandleFunc("/", http.HandlerFunc(HandleWebsite))
-	http.HandleFunc("/discord", http.HandlerFunc(HandleDiscord))
+	http.HandleFunc("/discord", http.HandlerFunc(HandleGenericWithCaptchaPage("/discord")))
 	http.HandleFunc("/videos", http.HandlerFunc(HandleVideos))
+	http.HandleFunc("/minecraft", http.HandlerFunc(HandleGenericWithCaptchaPage("/minecraft")))
 
 	println("Starting website")
 	err = http.ListenAndServe(":8080", nil)

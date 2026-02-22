@@ -1,5 +1,11 @@
 #!/bin/bash
 
+set -a
+
+source .env
+
+set +a
+
 set -e -u -o pipefail
 
 pushd web
