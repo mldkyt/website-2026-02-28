@@ -58,14 +58,16 @@ const spawn = await getImage({ src: spawnSrc });
                         Since the MC server allows offline accounts to log in, skins don't work the same way they used to. To set a skin, please use the following command: <code>/skin set &lt;username&gt;</code>. Replace the username with
                         the username of a player who has the desired skin.
                     </p>
-
-                    <h2>Setting homes</h2>
-                    <p>You can set up to 5 homes. Use <code>/sethome</code> to set your main house, and <code>/sethome &lt;name&gt;</code> to set a named home.</p>
-                    <p>You can later use <code>/home</code> and <code>/home &lt;name&gt;</code> to teleport to a home</p>
+                    
+                    <h2>Homes</h2>
+                    <p>
+                        You can set both normal and named homes, by using the <code>/sethome</code> and <code>/sethome &lt;name&gt;</code> commands. To teleport around, you can use <code>/home home</code> to teleport to your primary home, <code
+                            >/home bed</code
+                        > to teleport to your bed or <code>/home &lt;name&gt;</code> to teleport to a named home.
+                    </p>
 
                     <h2>Warps</h2>
-                    <p>List warps using <code>/warps</code>. You can use a warp by typing <code>/warp &lt;name&gt;</code>.</p>
-                    <p>To set a warp, please contact an admin. Unlike homes, warps are public, and require an admin to set them.</p>
+                    <p>List warps using <code>/warps</code>. You can use a warp by typing <code>/warp &lt;name&gt;</code>. To set a warp, please contact an admin. Unlike homes, warps are public, and require an admin to set them.</p>
 
                     <h2>Locking your stuff</h2>
                     <p>If you want to lock your stuff to prevent other players from e.g. stealing your stuff, you can use the classic <code>/lock</code> command. Once you run it, click on the item you want to lock to lock it.</p>
@@ -82,7 +84,7 @@ const spawn = await getImage({ src: spawnSrc });
 
                     <h2>Other useful commands</h2>
                     <ul>
-                        <li><strong>Admin Contact</strong> - the <code>/contact</code> command is there to contact admins.</li>
+                        <li><strong>Admin Contact</strong> - the <code>/contact</code> command is there to contact admins. Aliases are <code>/social</code>, <code>/socials</code>, <code>/matrix</code>, <code>/xmpp</code></li>
                         <li><strong>Discord Server</strong> - a <code>/discord</code> command is there to get an invite.</li>
                         <li><strong>Meow</strong> - the <code>/meow</code> command will meow</li>
                     </ul>
